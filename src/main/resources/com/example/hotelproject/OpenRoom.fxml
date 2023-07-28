@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="395.0" prefWidth="534.0" styleClass="font-text" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.OpenRoomController">
+         <children>
+            <Label alignment="CENTER" layoutX="116.0" layoutY="21.0" prefHeight="31.0" prefWidth="314.0" text="NHẬN PHÒNG KHÁCH SẠN" textAlignment="CENTER">
+               <font>
+                  <Font name="Times New Roman Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="roomNumber" alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="52.0" prefHeight="31.0" prefWidth="105.0" text="SỐ PHÒNG" textAlignment="CENTER">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="195.0" prefHeight="18.0" prefWidth="118.0" styleClass="font-text" text="Tên khách hàng :">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="236.0" prefHeight="18.0" prefWidth="118.0" styleClass="font-text" text="CMND/Passport :">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="fcustomerName" layoutX="164.0" layoutY="191.0" prefHeight="33.0" prefWidth="332.0" style="-fx-background-color: #ffffff;">
+         <styleClass>
+            <String fx:value="font-text" />
+            <String fx:value="btn" />
+         </styleClass></TextField>
+            <TextField fx:id="fnumberID" layoutX="164.0" layoutY="229.0" prefHeight="33.0" prefWidth="332.0" style="-fx-background-color: #ffffff;">
+         <styleClass>
+            <String fx:value="font-text" />
+            <String fx:value="btn" />
+         </styleClass></TextField>
+            <Label layoutX="40.0" layoutY="274.0" prefHeight="19.0" prefWidth="105.0" styleClass="font-text" text="Số điện thoại :">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="294.0" layoutY="157.0" prefHeight="19.0" prefWidth="72.0" styleClass="font-text" text="Số người :">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="fphoneNumber" layoutX="164.0" layoutY="267.0" prefHeight="33.0" prefWidth="332.0" style="-fx-background-color: #ffffff;">
+         <styleClass>
+            <String fx:value="font-text" />
+            <String fx:value="btn" />
+         </styleClass></TextField>
+            <TextField fx:id="fnop" layoutX="364.0" layoutY="150.0" prefHeight="33.0" prefWidth="132.0" style="-fx-background-color: #ffffff;">
+         <styleClass>
+            <String fx:value="font-text" />
+            <String fx:value="btn" />
+         </styleClass></TextField>
+            <Button layoutX="141.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleOKButtonAction" prefHeight="42.0" prefWidth="132.0" styleClass="btn" text="OK" />
+            <Button layoutX="315.0" layoutY="322.0" mnemonicParsing="false" onAction="#onCancelButtonClick" prefHeight="42.0" prefWidth="132.0" styleClass="btn" text="Cancel" />
+            <Label layoutX="40.0" layoutY="111.0" prefHeight="18.0" prefWidth="90.0" styleClass="font-text" text="Giá phòng :">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="roomPrice" layoutX="131.0" layoutY="111.0" prefHeight="18.0" prefWidth="84.0" text="roomPrice" />
+      <Label layoutX="40.0" layoutY="157.0" prefHeight="19.0" prefWidth="105.0" styleClass="font-text" text="Mã Booking :">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fbookingID" layoutX="164.0" layoutY="150.0" prefHeight="33.0" prefWidth="118.0" style="-fx-background-color: #ffffff;">
+         <styleClass>
+            <String fx:value="font-text" />
+            <String fx:value="btn" />
+         </styleClass></TextField>
+      <Label layoutX="315.0" layoutY="111.0" prefHeight="19.0" prefWidth="118.0" styleClass="font-text" text="Khách vãng lai :">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="fKhachVangLai" layoutX="450.0" layoutY="110.0" mnemonicParsing="false" onAction="#handleChooseRadioButton" />
+      <Separator layoutY="83.0" prefHeight="9.0" prefWidth="534.0" />
+         </children>
+      </AnchorPane>

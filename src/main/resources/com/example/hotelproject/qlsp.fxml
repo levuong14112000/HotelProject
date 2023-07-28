@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="681.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView prefHeight="646.0" prefWidth="774.0">
+         <columns>
+            <TableColumn prefWidth="46.0" text="STT" />
+            <TableColumn prefWidth="118.0" text="MÃ SẢN PHẨM" />
+            <TableColumn minWidth="0.0" prefWidth="182.0" text="TÊN SẢN PHẨM" />
+            <TableColumn prefWidth="133.0" text="ĐƠN GIÁ" />
+            <TableColumn minWidth="0.0" prefWidth="111.0" text="ĐƠN VỊ TÍNH" />
+            <TableColumn prefWidth="183.0" text="LOẠI SẢN PHẨM" />
+         </columns>
+      </TableView>
+      <TextField layoutX="793.0" layoutY="16.0" prefHeight="38.0" prefWidth="219.0" />
+      <Button layoutX="795.0" layoutY="464.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="87.0" text="THÊM " />
+      <Label layoutX="795.0" layoutY="72.0" prefHeight="30.0" prefWidth="107.0" text="MÃ SẢN PHẨM">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="793.0" layoutY="142.0" prefHeight="26.0" prefWidth="115.0" text="TÊN SẢN PHẨM">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="794.0" layoutY="169.0" prefHeight="38.0" prefWidth="364.0" />
+      <Label layoutX="794.0" layoutY="208.0" prefHeight="29.0" prefWidth="78.0" text="ĐƠN GIÁ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="795.0" layoutY="316.0" prefHeight="38.0" prefWidth="362.0" />
+      <Button layoutX="1068.0" layoutY="464.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="87.0" text="SỬA" />
+      <Button layoutX="795.0" layoutY="574.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="87.0" text="XÓA" />
+      <Button layoutX="1068.0" layoutY="574.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="87.0" text="CLEAR" />
+      <Label layoutX="485.0" layoutY="645.0" prefHeight="35.0" prefWidth="276.0" text="TỔNG 30 SẢN PHẨM">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="1031.0" layoutY="16.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="126.0" text="TÌM" />
+      <Label layoutX="795.0" layoutY="361.0" prefHeight="30.0" prefWidth="123.0" text="LOẠI SẢN PHẨM">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="794.0" layoutY="102.0" prefHeight="38.0" prefWidth="363.0" />
+      <Label layoutX="794.0" layoutY="280.0" prefHeight="29.0" prefWidth="78.0" text="ĐƠN VỊ TÍNH">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <DatePicker layoutX="793.0" layoutY="238.0" prefHeight="41.0" prefWidth="365.0" />
+      <ComboBox layoutX="792.0" layoutY="391.0" prefHeight="40.0" prefWidth="367.0" />
+   </children>
+</AnchorPane>

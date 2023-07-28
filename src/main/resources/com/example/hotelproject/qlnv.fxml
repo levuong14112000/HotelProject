@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="681.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+      <children>
+         <TableView layoutY="-1.0" prefHeight="607.0" prefWidth="868.0">
+            <columns>
+               <TableColumn prefWidth="62.66668701171875" text="STT" />
+               <TableColumn prefWidth="103.0" text="MÃ NHÂN VIÊN" />
+               <TableColumn minWidth="0.0" prefWidth="196.0" text="HỌ TÊN" />
+               <TableColumn prefWidth="131.0" text="NGÀY SINH" />
+               <TableColumn prefWidth="85.0" text="GIỚI TÍNH" />
+               <TableColumn prefWidth="141.60003662109375" text="PASSWORD" />
+               <TableColumn prefWidth="146.4000244140625" text="TRẠNG THÁI" />
+            </columns>
+         </TableView>
+         <TextField layoutX="883.0" layoutY="14.0" prefHeight="38.0" prefWidth="178.0" />
+         <Button layoutX="884.0" layoutY="476.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="87.0" text="THÊM " />
+         <Label layoutX="883.0" layoutY="52.0" prefHeight="30.0" prefWidth="107.0" text="MÃ NHÂN VIÊN">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+         <TextField layoutX="883.0" layoutY="422.0" prefHeight="38.0" prefWidth="287.0" />
+         <Label layoutX="883.0" layoutY="120.0" prefHeight="26.0" prefWidth="90.0" text="HỌ VÀ TÊN">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+         <TextField layoutX="883.0" layoutY="146.0" prefHeight="38.0" prefWidth="287.0" />
+         <Label layoutX="883.0" layoutY="184.0" prefHeight="29.0" prefWidth="78.0" text="NGÀY SINH">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+         <TextField layoutX="883.0" layoutY="352.0" prefHeight="38.0" prefWidth="287.0" />
+         <Button layoutX="1085.0" layoutY="476.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="87.0" text="SỬA" />
+         <Button layoutX="884.0" layoutY="555.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="87.0" text="XÓA" />
+         <Button layoutX="1085.0" layoutY="555.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="87.0" text="CLEAR" />
+         <Label layoutX="593.0" layoutY="615.0" prefHeight="35.0" prefWidth="276.0" text="TỔNG 30 NHÂN VIÊN">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+         <Button layoutX="1091.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="74.0" text="TÌM" />
+         <Label layoutX="883.0" layoutY="252.0" prefHeight="29.0" prefWidth="78.0" text="GIỚI TÍNH">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+         <Label layoutX="883.0" layoutY="390.0" prefHeight="30.0" prefWidth="102.0" text="TRẠNG THÁI">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+         <TextField layoutX="883.0" layoutY="82.0" prefHeight="38.0" prefWidth="287.0" />
+         <Label layoutX="883.0" layoutY="320.0" prefHeight="29.0" prefWidth="78.0" text="PASSWORD">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+         <DatePicker layoutX="882.0" layoutY="214.0" prefHeight="41.0" prefWidth="287.0" />
+         <ComboBox layoutX="882.0" layoutY="282.0" prefHeight="40.0" prefWidth="287.0" />
+      </children>
+   </AnchorPane>

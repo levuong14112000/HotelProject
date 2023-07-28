@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="366.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.LoginController">
+   <children>
+      <Label layoutX="39.0" layoutY="142.0" prefHeight="17.0" prefWidth="77.0" text="USERNAME">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="186.0" text="PASSWORD">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUsername" layoutX="126.0" layoutY="137.0" style="-fx-border-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF);">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtPassword" layoutX="126.0" layoutY="181.0" style="-fx-border-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF);">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </TextField>
+      <Label alignment="CENTER" layoutX="154.0" layoutY="14.0" prefHeight="17.0" prefWidth="321.0" text="WELCOME">
+         <font>
+            <Font name="Arial" size="28.0" />
+         </font>
+      </Label>
+      <Button layoutX="89.0" layoutY="231.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" text="Đăng Nhập">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font></Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="266.0" layoutX="314.0" layoutY="74.0" stroke="BLACK" strokeType="INSIDE" width="261.0" />
+      <Line endX="440.5" layoutX="159.0" layoutY="59.0" startX="-159.0" stroke="#5469c6" strokeWidth="5.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,36 @@
+
+.color-background{
+    -fx-background-color: #f2faff ;
+}
+
+.bg-main-top{
+    -fx-background-color: #3f69cd;
+}
+
+.btn{
+    -fx-background-color:  linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF);
+    -fx-border-color:  #7eb4ee;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family : "Times New Roman";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.btn:hover{
+    -fx-background-color:  #FFFBD1;
+    -fx-border-width: 2px;
+}
+.font-text{
+    -fx-font-family : "Times New Roman";
+    -fx-font-size: 16px;
+}
+.roomsbookingbutton{
+    -fx-background-color: #FCF54C;
+}
+.roomscheckinbutton{
+    -fx-background-color: #DF0029;
+}
+
+
+

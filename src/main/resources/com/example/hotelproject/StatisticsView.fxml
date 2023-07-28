@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1290.0" styleClass="color-background" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.StatisticsController">
+   <children>
+      <AnchorPane layoutX="294.0" layoutY="45.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="btn" stylesheets="@CSS.css">
+         <children>
+            <Label fx:id="lbPhongTrong" alignment="CENTER" layoutX="47.0" layoutY="51.0" prefHeight="69.0" prefWidth="106.0" text="0" textFill="#009298">
+               <font>
+                  <Font name="Times New Roman Bold" size="45.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="36.0" layoutY="120.0" prefHeight="38.0" prefWidth="128.0" text="Phòng trống">
+               <font>
+                  <Font name="Times New Roman" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="545.0" layoutY="42.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="btn" stylesheets="@CSS.css">
+         <children>
+            <Label fx:id="lbCheckIn" alignment="CENTER" layoutX="47.0" layoutY="51.0" prefHeight="69.0" prefWidth="106.0" text="0" textFill="#5bbd2b">
+               <font>
+                  <Font name="Times New Roman Bold" size="45.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="47.0" layoutY="120.0" prefHeight="38.0" prefWidth="106.0" text="Check in">
+               <font>
+                  <Font name="Times New Roman" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="801.0" layoutY="42.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="btn" stylesheets="@CSS.css">
+         <children>
+            <Label fx:id="lbCheckOut" alignment="CENTER" layoutX="47.0" layoutY="51.0" prefHeight="69.0" prefWidth="106.0" text="0" textFill="#ec870e">
+               <font>
+                  <Font name="Times New Roman Bold" size="45.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="47.0" layoutY="120.0" prefHeight="38.0" prefWidth="106.0" text="Check out">
+               <font>
+                  <Font name="Times New Roman" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="1057.0" layoutY="42.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="btn" stylesheets="@CSS.css">
+         <children>
+            <Label fx:id="lbBooking" alignment="CENTER" layoutX="47.0" layoutY="51.0" prefHeight="69.0" prefWidth="106.0" text="0" textFill="#a2007c">
+               <font>
+                  <Font name="Times New Roman Bold" size="45.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="47.0" layoutY="120.0" prefHeight="38.0" prefWidth="106.0" text="Booking">
+               <font>
+                  <Font name="Times New Roman" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="46.0" layoutY="45.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="btn" stylesheets="@CSS.css">
+         <children>
+            <Label fx:id="lbTongBill" alignment="CENTER" layoutX="47.0" layoutY="51.0" prefHeight="69.0" prefWidth="106.0" text="0" textFill="#e33539">
+               <font>
+                  <Font name="Times New Roman Bold" size="45.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="47.0" layoutY="120.0" prefHeight="38.0" prefWidth="106.0" text="Tổng bill">
+               <font>
+                  <Font name="Times New Roman" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="41.0" layoutY="303.0" prefHeight="267.0" prefWidth="1214.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Label layoutX="40.0" layoutY="14.0" prefHeight="38.0" prefWidth="128.0" text="Doanh số :">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="84.0" prefHeight="38.0" prefWidth="152.0" text="Chiết khấu :">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="154.0" prefHeight="38.0" prefWidth="128.0" text="Phụ thu :">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="211.0" prefHeight="38.0" prefWidth="128.0" text="Doanh thu :">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbDoanhSo" alignment="CENTER_RIGHT" layoutX="965.0" layoutY="24.0" prefHeight="38.0" prefWidth="214.0" text="0">
+               <font>
+                  <Font name="Times New Roman" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbChietKhau" alignment="CENTER_RIGHT" layoutX="965.0" layoutY="90.0" prefHeight="38.0" prefWidth="214.0" text="0">
+               <font>
+                  <Font name="Times New Roman" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbPhuThu" alignment="CENTER_RIGHT" layoutX="965.0" layoutY="160.0" prefHeight="38.0" prefWidth="214.0" text="0">
+               <font>
+                  <Font name="Times New Roman" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbDoanhThu" alignment="CENTER_RIGHT" layoutX="965.0" layoutY="217.0" prefHeight="38.0" prefWidth="214.0" text="0">
+               <font>
+                  <Font name="Times New Roman" size="24.0" />
+               </font>
+            </Label>
+            <Separator layoutY="65.0" prefHeight="0.0" prefWidth="1214.0" />
+            <Separator layoutY="139.0" prefHeight="0.0" prefWidth="1214.0" />
+            <Separator layoutY="197.0" prefHeight="0.0" prefWidth="1214.0" />
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER_RIGHT" layoutX="809.0" layoutY="602.0" prefHeight="38.0" prefWidth="248.0" text="Tổng số khách :">
+         <font>
+            <Font name="Times New Roman Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="809.0" layoutY="640.0" prefHeight="38.0" prefWidth="248.0" text="Bình quân mỗi người :">
+         <font>
+            <Font name="Times New Roman Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="809.0" layoutY="678.0" prefHeight="38.0" prefWidth="248.0" text="Bình quân mỗi phòng :">
+         <font>
+            <Font name="Times New Roman Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbTongSoKhach" alignment="CENTER_RIGHT" layoutX="1063.0" layoutY="602.0" prefHeight="38.0" prefWidth="152.0" text="0">
+         <font>
+            <Font name="Times New Roman" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbBinhQuanMoiNguoi" alignment="CENTER_RIGHT" layoutX="1063.0" layoutY="640.0" prefHeight="38.0" prefWidth="152.0" text="0">
+         <font>
+            <Font name="Times New Roman" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbBinhQuanMoiPhong" alignment="CENTER_RIGHT" layoutX="1063.0" layoutY="678.0" prefHeight="38.0" prefWidth="152.0" text="0">
+         <font>
+            <Font name="Times New Roman" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

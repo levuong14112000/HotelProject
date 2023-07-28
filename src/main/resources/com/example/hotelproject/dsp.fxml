@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Label prefHeight="95.0" prefWidth="1987.0" style="-fx-border-width: 0 0 5 0; -fx-border-color: #5469c6;" text="     ADMIN" textFill="#265ed0" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="36.0" />
+         </font>
+      </Label>
+   </top>
+   <left>
+      <VBox prefHeight="1047.0" prefWidth="260.0" style="-fx-border-color: #5469c6; -fx-border-width: 0 5 0 0;" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="268.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" text="ĐẶT PHÒNG">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Times New Roman Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="268.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" text="HÀNG HOÁ">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Times New Roman Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="268.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" text="PHÒNG">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Times New Roman Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="268.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" text="NHÂN VIÊN">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Times New Roman Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="268.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" text="THỐNG KÊ">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Times New Roman Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="268.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" text="THOÁT">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="400.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Times New Roman Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <StackPane prefHeight="425.0" prefWidth="125.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="rightPane" prefHeight="603.0" prefWidth="425.0">
+               <children>
+                  <Button layoutX="801.0" layoutY="24.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 104">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="1045.0" layoutY="158.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 101">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="1045.0" layoutY="24.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 105">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="67.0" layoutY="294.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 110">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="312.0" layoutY="158.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 107">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="67.0" layoutY="158.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 106">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="557.0" layoutY="24.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 103">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="312.0" layoutY="24.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 102">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="557.0" layoutY="294.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 112">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="312.0" layoutY="294.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 111">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="801.0" layoutY="158.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 109">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="557.0" layoutY="158.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 108">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="67.0" layoutY="24.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 101">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="801.0" layoutY="294.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 113">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="67.0" layoutY="436.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 114">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="1045.0" layoutY="294.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 101">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="312.0" layoutY="436.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="PHÒNG 115">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

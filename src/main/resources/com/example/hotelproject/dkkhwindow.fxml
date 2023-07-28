@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="800.0" prefWidth="1170.0">
+         <children>
+            <Label layoutX="295.0" layoutY="14.0" prefHeight="54.0" prefWidth="369.0" text="QUẢN LÝ ĐẶT PHÒNG">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="380.0" layoutY="41.0" prefHeight="54.0" prefWidth="67.0" text="101">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="114.0" layoutY="105.0" prefHeight="24.0" prefWidth="146.0" text="MÃ HÓA ĐƠN">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField layoutX="114.0" layoutY="128.0" prefHeight="26.0" prefWidth="103.0" />
+            <Label layoutX="122.0" layoutY="275.0" prefHeight="54.0" prefWidth="146.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField layoutX="114.0" layoutY="178.0" prefWidth="199.0" />
+            <Label layoutX="114.0" layoutY="155.0" prefHeight="24.0" prefWidth="146.0" text="HỌ VÀ TÊN">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="112.0" layoutY="204.0" prefHeight="17.0" prefWidth="150.0" text="NGÀY SINH">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <DatePicker layoutX="114.0" layoutY="225.0" prefHeight="0.0" prefWidth="199.0" />
+            <TextField layoutX="505.0" layoutY="128.0" prefWidth="199.0" />
+            <TextField layoutX="505.0" layoutY="178.0" prefWidth="199.0" />
+            <DatePicker layoutX="504.0" layoutY="225.0" prefWidth="199.0" />
+            <Label layoutX="505.0" layoutY="201.0" prefHeight="24.0" prefWidth="149.0" text="NGÀY THUÊ">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="507.0" layoutY="155.0" prefHeight="24.0" prefWidth="146.0" text="CMND">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="507.0" layoutY="108.0" prefHeight="18.0" prefWidth="146.0" text="ĐỊA CHỈ">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="324.0" layoutY="74.0" prefHeight="54.0" prefWidth="112.0" text="GIÁ PHÒNG :">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="428.0" layoutY="74.0" prefHeight="54.0" prefWidth="66.0" text="200000">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="112.0" layoutY="251.0" prefHeight="18.0" prefWidth="150.0" text="GIỚI TÍNH">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TableView layoutX="19.0" layoutY="300.0" prefHeight="222.0" prefWidth="766.0">
+              <columns>
+                <TableColumn prefWidth="88.79998779296875" text="MÃ HÓA ĐƠN" />
+                  <TableColumn prefWidth="121.5999755859375" text="HỌ VÀ TÊN" />
+                  <TableColumn prefWidth="89.59996032714844" text="NGÀY SINH" />
+                  <TableColumn minWidth="0.0" prefWidth="70.4000244140625" text="GIỚI TÍNH" />
+                  <TableColumn prefWidth="147.199951171875" text="ĐỊA CHỈ" />
+                  <TableColumn prefWidth="115.20001220703125" text="PARTPORT" />
+                  <TableColumn minWidth="0.0" prefWidth="136.79998779296875" text="NGÀY ĐẾN" />
+              </columns>
+            </TableView>
+            <ComboBox layoutX="114.0" layoutY="269.0" prefHeight="26.0" prefWidth="199.0" />
+            <Button layoutX="232.0" layoutY="532.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="103.0" style="-fx-border-color: #333;" text="ĐẶT PHÒNG" textAlignment="CENTER" textFill="#2788ac" />
+            <Button layoutX="501.0" layoutY="532.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="103.0" style="-fx-border-color: #333;" text="DỊCH VỤ" textAlignment="CENTER" textFill="#2788ac" />
+            <Button layoutX="232.0" layoutY="127.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="82.0" style="-fx-border-color: #333;" text="SELECT" textAlignment="CENTER" textFill="#2788ac" />
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
