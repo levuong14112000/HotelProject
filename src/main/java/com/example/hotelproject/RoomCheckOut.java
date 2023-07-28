@@ -1,23 +1,32 @@
 package com.example.hotelproject;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 
 public class RoomCheckOut {
     private int checkOutID;
     private int roomID;
     private int checkInID;
-    private Timestamp checkOutTime;
+    private Time checkOutTime;
     private boolean isDeleted;
     private int userID;
 
     public RoomCheckOut(){}
 
-    public RoomCheckOut(int checkOutID, int roomID, int checkInID, Timestamp checkOutTime, boolean isDeleted) {
+    public RoomCheckOut(int checkOutID, int roomID, int checkInID, Time checkOutTime, boolean isDeleted) {
         this.checkOutID = checkOutID;
         this.checkInID =checkInID;
         this.roomID = roomID;
         this.checkOutTime = checkOutTime;
         this.isDeleted = isDeleted;
+    }
+
+    public RoomCheckOut(int CheckOutID, int roomID, int checkInID1, Time checkOutTime, int userID) {
+        this.checkOutID = CheckOutID;
+        this.checkInID =checkInID1;
+        this.roomID = roomID;
+        this.checkOutTime = checkOutTime;
+        this.userID = userID;
     }
 
     // Getters and setters
@@ -54,11 +63,11 @@ public class RoomCheckOut {
         this.checkOutID = checkOutID;
     }
 
-    public Timestamp getCheckOutTime() {
+    public Time getCheckOutTime() {
         return checkOutTime;
     }
 
-    public void setCheckOutTime(Timestamp  checkOutTime) {
+    public void setCheckOutTime(Time  checkOutTime) {
         this.checkOutTime = checkOutTime;
     }
 

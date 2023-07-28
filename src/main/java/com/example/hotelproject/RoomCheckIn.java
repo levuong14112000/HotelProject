@@ -1,14 +1,14 @@
 package com.example.hotelproject;
 
+import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 public class RoomCheckIn {
     private int checkInID;
     private int roomID;
     private int customerID;
     private int bookingID;
-    private Timestamp checkInTime;
+    private Time checkInTime;
     private int nop;
     private boolean isDeleted;
     private int userID;
@@ -25,6 +25,17 @@ public class RoomCheckIn {
     }
 
     public RoomCheckIn(int roomID, int nop, int userID) {
+        this.checkInID = checkInID;
+        this.roomID = roomID;
+        this.customerID = customerID;
+        this.bookingID = bookingID;
+        this.checkInTime = checkInTime;
+        this.isDeleted = false;
+        this.nop =nop;
+        this.userID = userID;
+    }
+
+    public RoomCheckIn(int checkInID, int roomID, int customerID, int bookingID, Time checkInTime, int nop, int userID) {
         this.checkInID = checkInID;
         this.roomID = roomID;
         this.customerID = customerID;
@@ -85,11 +96,11 @@ public class RoomCheckIn {
         this.bookingID = bookingID;
     }
 
-    public Timestamp getCheckInTime() {
+    public Time getCheckInTime() {
         return checkInTime;
     }
 
-    public void setCheckInTime(Timestamp checkInTime) {
+    public void setCheckInTime(Time checkInTime) {
         this.checkInTime = checkInTime;
     }
 

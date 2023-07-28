@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.CheckInController">
+   <children>
+      <TableView fx:id="table" layoutX="22.0" layoutY="108.0" prefHeight="397.0" prefWidth="722.0">
+        <columns>
+          <TableColumn fx:id="checkin" prefWidth="95.99997234344482" text="CHECK IN ID" />
+          <TableColumn fx:id="room" prefWidth="76.79998779296875" text="ROOM ID" />
+            <TableColumn fx:id="customer" prefWidth="88.80003356933594" text="CUSTOMER ID" />
+            <TableColumn fx:id="booking" prefWidth="124.79998779296875" text="BOOKING ID" />
+            <TableColumn fx:id="checkin_time" minWidth="0.0" prefWidth="113.60003662109375" text="CHECKIN TIME" />
+            <TableColumn fx:id="nop" prefWidth="108.79998779296875" text="NOP" />
+            <TableColumn fx:id="userid" prefWidth="112.0001220703125" text="USER ID" />
+        </columns>
+      </TableView>
+      <Label layoutX="183.0" layoutY="28.0" prefHeight="38.0" prefWidth="406.0" text="DANH SÁCH CHECK IN KHÁCH HÀNG">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

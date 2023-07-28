@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class RoomsController implements Initializable {
+public class RoomsController_1 implements Initializable {
     @FXML
     private TableView<Room> tableView;
     @FXML
@@ -33,7 +33,7 @@ public class RoomsController implements Initializable {
     @FXML
     private ComboBox c_roo;
 
-    public RoomsController() {
+    public RoomsController_1() {
     }
 
 
@@ -47,7 +47,7 @@ public class RoomsController implements Initializable {
     }
 
     public void  show() {
-        ResultSet resultSet = RoomList_DAO.showRooms();
+        ResultSet resultSet = RoomList_DAO.showRoomTKs();
         String count = String.valueOf(RoomList_DAO.calculateTotalRoom());
         CountRoom.setText("Tổng " + count + " Phòng");
         ObservableList<Room> rooms = FXCollections.observableArrayList();

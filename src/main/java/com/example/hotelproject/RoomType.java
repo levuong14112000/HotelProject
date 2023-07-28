@@ -22,6 +22,10 @@ public class RoomType {
         this.basePrice = roomPrice;
     }
 
+    public RoomType(String roomTypeName) {
+        this.roomTypeName=roomTypeName;
+    }
+
     public int getRoomTypeID() {
         return roomTypeID;
     }

@@ -32,6 +32,32 @@ public class RoomList_DAO {
         }
         return rs;
     }
+    public static ResultSet showRoomTKs() {
+        ResultSet rs;
+        try {
+            String query = "SELECT rooms.RoomID, rooms.RoomNumber, rooms.Status,rooms.RoomTypeID,roomtypes.BasePrice, roomtypes.RoomTypeName " +
+                    "FROM rooms " +
+                    "JOIN roomtypes ON rooms.RoomTypeID = roomtypes.RoomTypeID WHERE STATUS = 0 ORDER BY RoomID ASC ";
+            PreparedStatement stmt =  connection.prepareStatement(query);
+            rs = stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
+    public static ResultSet ReadRoomType(){
+        ResultSet rs ;
+        try {
+            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            String sql = "SELECT * FROM Roomtypes";
+            rs = stmt.executeQuery(sql);
+        }
+        catch (SQLException e){
+            throw  new RuntimeException(e);
+        }
+        return rs;
+    }
     public static int calculateTotalRoom() {
         int totalRoom = 0;
         try {

@@ -1,9 +1,16 @@
 package com.example.hotelproject;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -60,5 +67,71 @@ public class StatisticsController implements Initializable {
         lbBinhQuanMoiNguoi.setText(String.valueOf(binhQuanMoiNguoi));
         double binhQuanMoiPhong = doanhThu / tongBill;
         lbBinhQuanMoiPhong.setText(String.valueOf(binhQuanMoiPhong));
+    }
+
+    public void PhongTrongActionOnclick(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ttpThongKe.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.setTitle("Danh Sách Phòng Trống");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void CheckoutActionOnclick(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CheckOutView.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.setTitle("Danh Sách Check Out");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void BookingActionOnclick(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("BookingView.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.setTitle("Danh Sách Booking");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void BillActionOnclick(ActionEvent actionEvent) {
+    }
+
+    public void CheckinctionOnclick(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CheckInView.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.setTitle("Danh Sách Check In");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

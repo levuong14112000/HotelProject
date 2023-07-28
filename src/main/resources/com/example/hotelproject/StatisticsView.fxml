@@ -6,6 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import javafx.scene.control.Button?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1290.0" styleClass="color-background" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.StatisticsController">
    <children>
       <AnchorPane layoutX="294.0" layoutY="45.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="btn" stylesheets="@CSS.css">
@@ -20,6 +21,7 @@
                   <Font name="Times New Roman" size="24.0" />
                </font>
             </Label>
+            <Button text="Chi Tiết"  prefHeight="38.0" prefWidth="106.0" onAction="#PhongTrongActionOnclick"></Button>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="545.0" layoutY="42.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="btn" stylesheets="@CSS.css">
@@ -34,6 +36,7 @@
                   <Font name="Times New Roman" size="24.0" />
                </font>
             </Label>
+            <Button text="Chi Tiết"  prefHeight="38.0" prefWidth="106.0" onAction="#CheckinctionOnclick"></Button>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="801.0" layoutY="42.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="btn" stylesheets="@CSS.css">
@@ -48,6 +51,7 @@
                   <Font name="Times New Roman" size="24.0" />
                </font>
             </Label>
+            <Button text="Chi Tiết"  prefHeight="38.0" prefWidth="106.0" onAction="#CheckoutActionOnclick"></Button>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="1057.0" layoutY="42.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="btn" stylesheets="@CSS.css">
@@ -62,6 +66,7 @@
                   <Font name="Times New Roman" size="24.0" />
                </font>
             </Label>
+            <Button text="Chi Tiết"  prefHeight="38.0" prefWidth="106.0" onAction="#BookingActionOnclick"></Button>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="46.0" layoutY="45.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="btn" stylesheets="@CSS.css">
@@ -76,6 +81,7 @@
                   <Font name="Times New Roman" size="24.0" />
                </font>
             </Label>
+            <Button  text="Chi Tiết"  prefHeight="38.0" prefWidth="106.0" onAction="#BillActionOnclick" ></Button>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="41.0" layoutY="303.0" prefHeight="267.0" prefWidth="1214.0" style="-fx-background-color: #ffffff;">

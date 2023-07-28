@@ -53,7 +53,7 @@ public class RoomCheckOut_DAO {
     private static void updateRoomCheckOut(RoomCheckOut roomCheckOut, int checkOutID, int userID) {
         String updateQuery = "UPDATE RoomCheckOuts SET CheckOutTime = ?, UserID = ? WHERE CheckOutID = ?";
         try (PreparedStatement updateStatement = connection.prepareStatement(updateQuery)) {
-            updateStatement.setTimestamp(1, roomCheckOut.getCheckOutTime());
+            updateStatement.setTime(1, roomCheckOut.getCheckOutTime());
             updateStatement.setInt(2, userID);
             updateStatement.setInt(3, checkOutID);
             updateStatement.executeUpdate();
