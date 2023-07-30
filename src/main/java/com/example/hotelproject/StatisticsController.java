@@ -117,6 +117,19 @@ public class StatisticsController implements Initializable {
         }
     }
     public void BillActionOnclick(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("BaoCaoView.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.setTitle("Danh Sách Bill");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void CheckinctionOnclick(ActionEvent actionEvent) {

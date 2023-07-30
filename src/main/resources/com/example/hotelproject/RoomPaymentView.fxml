@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1550.0" styleClass="color-background" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.RoomPaymentController">
+<AnchorPane prefHeight="800.0" prefWidth="1550.0" styleClass="color-background" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.RoomPaymentController">
     <children>
-        <TableView fx:id="paymentTable" layoutX="-3.0" prefHeight="800.0" prefWidth="873.0">
+        <TableView fx:id="paymentTable" layoutX="-3.0" prefHeight="800.0" prefWidth="1076.0">
             <columns>
                 <TableColumn fx:id="colTenMatHang" prefWidth="335.9999694824219" text="Tên mặt hàng">
                     <cellValueFactory>
@@ -35,7 +35,7 @@
                 </TableColumn>
             </columns>
         </TableView>
-      <Button fx:id="returnMain" layoutX="1268.0" layoutY="736.0" mnemonicParsing="false" onAction="#onTroVeSoDoPhongButtonClick" prefHeight="50.0" prefWidth="268.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="Trở về sơ đồ phòng">
+      <Button fx:id="returnMain" layoutX="1332.0" layoutY="711.0" mnemonicParsing="false" onAction="#onTroVeSoDoPhongButtonClick" prefHeight="50.0" prefWidth="197.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="Trở về sơ đồ phòng">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -43,7 +43,7 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="1268.0" layoutY="628.0" mnemonicParsing="false" onAction="#onCASHButtonClick" prefHeight="91.0" prefWidth="268.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="CASH">
+      <Button layoutX="1084.0" layoutY="591.0" mnemonicParsing="false" onAction="#onCASHButtonClick" prefHeight="91.0" prefWidth="445.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="CASH">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -51,7 +51,7 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="897.0" layoutY="296.0" mnemonicParsing="false" onAction="#onLenButtonClick" prefHeight="74.0" prefWidth="89.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="Lên">
+      <Button layoutX="1081.0" layoutY="357.0" mnemonicParsing="false" onAction="#onLenButtonClick" prefHeight="42.0" prefWidth="50.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="🡅">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -59,7 +59,7 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="897.0" layoutY="430.0" mnemonicParsing="false" onAction="#onXuongButtonClick" prefHeight="74.0" prefWidth="89.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="Xuống">
+      <Button layoutX="1081.0" layoutY="421.0" mnemonicParsing="false" onAction="#onXuongButtonClick" prefHeight="42.0" prefWidth="50.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="🡇">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -82,22 +82,22 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="1057.0" layoutY="32.0" prefHeight="17.0" prefWidth="154.0" text="Thành tiền :">
+      <Label layoutX="1106.0" layoutY="31.0" prefHeight="23.0" prefWidth="110.0" text="Thành tiền :">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="1057.0" layoutY="80.0" prefHeight="17.0" prefWidth="154.0" text="Chiết khấu :">
+      <Label layoutX="1106.0" layoutY="80.0" prefHeight="23.0" prefWidth="110.0" text="Chiết khấu :">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="1057.0" layoutY="131.0" prefHeight="17.0" prefWidth="154.0" text="Phụ thu :">
+      <Label layoutX="1106.0" layoutY="130.0" prefHeight="23.0" prefWidth="110.0" text="Phụ thu :">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="1268.0" layoutY="273.0" mnemonicParsing="false" onAction="#onChietKhauButtonClick" prefHeight="50.0" prefWidth="268.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="Chiết khấu">
+      <Button layoutX="1218.0" layoutY="228.0" mnemonicParsing="false" onAction="#onChietKhauButtonClick" prefHeight="42.0" prefWidth="302.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="Chiết khấu">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -105,7 +105,7 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="1268.0" layoutY="343.0" mnemonicParsing="false" onAction="#onPhuThuButtonClick" prefHeight="50.0" prefWidth="268.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="Phụ thu">
+      <Button layoutX="1218.0" layoutY="279.0" mnemonicParsing="false" onAction="#onPhuThuButtonClick" prefHeight="42.0" prefWidth="302.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="Phụ thu">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -118,12 +118,12 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="1057.0" layoutY="181.0" prefHeight="17.0" prefWidth="154.0" text="Thanh toán :">
+      <Label layoutX="1106.0" layoutY="180.0" prefHeight="23.0" prefWidth="118.0" text="Thanh toán :">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="986.0" layoutY="736.0" mnemonicParsing="false" onAction="#onTroVeTruocButtonClick" prefHeight="50.0" prefWidth="268.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="Trở về trước">
+      <Button layoutX="1084.0" layoutY="711.0" mnemonicParsing="false" onAction="#onTroVeTruocButtonClick" prefHeight="50.0" prefWidth="198.0" style="-fx-background-color: linear-gradient(to bottom, #C6DEFF, #FFFFFF, #C6DEFF,  #C6DEFF); -fx-border-color: #B4CFEC;" styleClass="btn" stylesheets="@CSS.css" text="Trở về trước">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

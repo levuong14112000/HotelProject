@@ -11,7 +11,7 @@ public class RoomList_DAO {
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            String sql = "SELECT * FROM Rooms";
+            String sql = "SELECT * FROM Rooms WHERE Deleted = 0";
             rs = stmt.executeQuery(sql);
         }
         catch (SQLException e){
@@ -24,7 +24,7 @@ public class RoomList_DAO {
         try {
             String query = "SELECT rooms.RoomID, rooms.RoomNumber, rooms.Status,rooms.RoomTypeID,roomtypes.BasePrice, roomtypes.RoomTypeName " +
                     "FROM rooms " +
-                    "JOIN roomtypes ON rooms.RoomTypeID = roomtypes.RoomTypeID ORDER BY RoomID ASC";
+                    "JOIN roomtypes ON rooms.RoomTypeID = roomtypes.RoomTypeID WHERE rooms.Deleted = 0 ORDER BY RoomID ASC " ;
             PreparedStatement stmt =  connection.prepareStatement(query);
             rs = stmt.executeQuery();
         } catch (SQLException e) {
@@ -33,11 +33,11 @@ public class RoomList_DAO {
         return rs;
     }
     public static ResultSet showRoomTKs() {
-        ResultSet rs;
+            ResultSet  rs;
         try {
             String query = "SELECT rooms.RoomID, rooms.RoomNumber, rooms.Status,rooms.RoomTypeID,roomtypes.BasePrice, roomtypes.RoomTypeName " +
                     "FROM rooms " +
-                    "JOIN roomtypes ON rooms.RoomTypeID = roomtypes.RoomTypeID WHERE STATUS = 0 ORDER BY RoomID ASC ";
+                    "JOIN roomtypes ON rooms.RoomTypeID = roomtypes.RoomTypeID WHERE STATUS = 0 AND rooms.Deleted = 0 ORDER BY RoomID ASC ";
             PreparedStatement stmt =  connection.prepareStatement(query);
             rs = stmt.executeQuery();
         } catch (SQLException e) {
@@ -75,7 +75,7 @@ public class RoomList_DAO {
     public static void insertRoom(String roomNumber, String roomTypeName) {
         try {
             String query = "INSERT INTO rooms (RoomNumber, RoomTypeID) " +
-                    "VALUES (?, (SELECT RoomTypeID FROM roomtypes WHERE RoomTypeName = ?))";
+                    "VALUES (?, (SELECT RoomTypeID FROM roomtypes WHERE RoomTypeName = ? AND Deleted = 0))";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, roomNumber);
             stmt.setString(2, roomTypeName);
@@ -88,7 +88,7 @@ public class RoomList_DAO {
         try {
             String query = "UPDATE rooms " +
                     "SET RoomTypeID = (SELECT RoomTypeID FROM roomtypes WHERE RoomTypeName = ?), RoomNumber = ? " +
-                    "WHERE ROOMID = ? ";
+                    "WHERE ROOMID = ? AND Deleted = 0";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, roomTypeName);
             stmt.setString(2, roomNumber);
@@ -100,7 +100,7 @@ public class RoomList_DAO {
     }
     public static void deleteRoom(int  roomID) {
         try {
-            String query = "DELETE FROM rooms WHERE RoomID = ?";
+            String query = "UPDATE rooms SET DELETED = 1 WHERE RoomID = ? AND Deleted = 0";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setInt(1, roomID);
             stmt.executeUpdate();

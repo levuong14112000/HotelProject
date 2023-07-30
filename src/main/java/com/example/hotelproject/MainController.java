@@ -125,10 +125,10 @@ public class MainController implements Initializable {
                 String id = resultSet.getString("RoomID");
                 int status = resultSet.getInt("Status");
                 Button button = new Button(tenPhong);
-                if (status < 0){
+                if (status > 0){
                     button.setStyle("-fx-background-color: #FF0000");
                 }
-                else {
+                if (status < 0){
                     button.setStyle("-fx-background-color: #FF9900");
                 }
                 button.setPrefWidth(newButtonWidth);
@@ -142,7 +142,7 @@ public class MainController implements Initializable {
                 button.setOnAction(event -> {
                     System.out.println("Đã nhấn vào phòng: " + tenPhong);
                     System.out.println(id);
-                    if (status != 0) {
+                    if (status > 0) {
                         checkInID = status;
                         openRoomDetail(id);
                     } else {

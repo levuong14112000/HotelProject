@@ -2,18 +2,16 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1290.0" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.ServiceController">
+<AnchorPane prefHeight="750.0" prefWidth="1290.0" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.ServiceController">
    <children>
-      <TableView fx:id="serviceTable" prefHeight="693.0" prefWidth="831.0">
+      <TableView fx:id="serviceTable" prefHeight="694.0" prefWidth="968.0">
          <columns>
             <TableColumn fx:id="colSTT" prefWidth="89.0" text="STT" />
             <TableColumn fx:id="colMaHang" prefWidth="133.0" text="Mã hàng" />
@@ -21,38 +19,34 @@
             <TableColumn fx:id="colDonGia" prefWidth="321.0" text="Đơn giá" />
          </columns>
       </TableView>
-      <TextField fx:id="txtSearch" layoutX="853.0" layoutY="17.0" prefHeight="39.0" prefWidth="276.0" style="-fx-background-color: #ffffff;" styleClass="btn" />
       <Label alignment="CENTER_RIGHT" layoutX="590.0" layoutY="701.0" prefHeight="35.0" prefWidth="173.0" text="Tổng số mặt hàng :">
          <font>
             <Font name="Times New Roman" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="1142.0" layoutY="12.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="131.0" styleClass="btn" text="Tìm" />
-      <Button layoutX="1008.0" layoutY="455.0" mnemonicParsing="false" onAction="#onChinhSuaButtonClick" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="Chỉnh sửa" textAlignment="CENTER">
+      <Button layoutX="1008.0" layoutY="508.0" mnemonicParsing="false" onAction="#onChinhSuaButtonClick" prefHeight="50.0" prefWidth="246.0" styleClass="btn" stylesheets="@CSS.css" text="Chỉnh sửa" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <ComboBox fx:id="cbbSearch" layoutX="851.0" layoutY="68.0" prefHeight="39.0" prefWidth="190.0" promptText="Lọc theo" style="-fx-background-color: #ffffff;" styleClass="btn" />
-      <Separator layoutX="831.0" layoutY="133.0" prefHeight="10.0" prefWidth="457.0" />
-      <Label layoutX="852.0" layoutY="169.0" prefHeight="29.0" prefWidth="138.0" text="Tên mặt hàng :">
+      <Label layoutX="985.0" layoutY="30.0" prefHeight="29.0" prefWidth="138.0" text="Tên mặt hàng :">
          <font>
             <Font name="Times New Roman" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="txtTenHang" layoutX="1001.0" layoutY="159.0" prefHeight="39.0" prefWidth="268.0" style="-fx-background-color: #ffffff;" styleClass="btn" />
-      <Label layoutX="855.0" layoutY="224.0" prefHeight="29.0" prefWidth="138.0" text="Đơn giá :">
+      <TextField fx:id="txtTenHang" layoutX="989.0" layoutY="60.0" prefHeight="39.0" prefWidth="268.0" style="-fx-background-color: #ffffff;" styleClass="btn" />
+      <Label layoutX="985.0" layoutY="107.0" prefHeight="29.0" prefWidth="138.0" text="Đơn giá :">
          <font>
             <Font name="Times New Roman" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="txtDonGia" layoutX="1001.0" layoutY="214.0" prefHeight="39.0" prefWidth="268.0" style="-fx-background-color: #ffffff;" styleClass="btn" />
-      <Button layoutX="1008.0" layoutY="610.0" mnemonicParsing="false" onAction="#onThemMoiButtonClick" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="Thêm mới" textAlignment="CENTER">
+      <TextField fx:id="txtDonGia" layoutX="985.0" layoutY="137.0" prefHeight="39.0" prefWidth="268.0" style="-fx-background-color: #ffffff;" styleClass="btn" />
+      <Button layoutX="1008.0" layoutY="440.0" mnemonicParsing="false" onAction="#onThemMoiButtonClick" prefHeight="50.0" prefWidth="246.0" styleClass="btn" stylesheets="@CSS.css" text="Thêm mới" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="1008.0" layoutY="532.0" mnemonicParsing="false" onAction="#onLuuButtonClick" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="Lưu" textAlignment="CENTER">
+      <Button layoutX="1008.0" layoutY="577.0" mnemonicParsing="false" onAction="#onLuuButtonClick" prefHeight="50.0" prefWidth="246.0" styleClass="btn" stylesheets="@CSS.css" text="Lưu" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
@@ -62,18 +56,17 @@
             <Font name="Times New Roman" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="1008.0" layoutY="689.0" mnemonicParsing="false" onAction="#onXoaButtonClick" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="Xoá" textAlignment="CENTER">
+      <Button layoutX="1008.0" layoutY="643.0" mnemonicParsing="false" onAction="#onXoaButtonClick" prefHeight="50.0" prefWidth="246.0" styleClass="btn" stylesheets="@CSS.css" text="Xoá" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Separator layoutX="831.0" layoutY="276.0" prefHeight="10.0" prefWidth="457.0" />
-      <Button layoutX="850.0" layoutY="405.0" mnemonicParsing="false" onAction="#onXuongButtonClick" prefHeight="72.0" prefWidth="96.0" styleClass="btn" stylesheets="@CSS.css" text="Xuống" textAlignment="CENTER">
+      <Button layoutX="943.0" layoutY="375.0" mnemonicParsing="false" onAction="#onXuongButtonClick" prefHeight="39.0" prefWidth="50.0" styleClass="btn" stylesheets="@CSS.css" text="🡇" textAlignment="CENTER">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="850.0" layoutY="309.0" mnemonicParsing="false" onAction="#onLenButtonClick" prefHeight="72.0" prefWidth="96.0" styleClass="btn" stylesheets="@CSS.css" text="Lên" textAlignment="CENTER">
+      <Button layoutX="943.0" layoutY="319.0" mnemonicParsing="false" onAction="#onLenButtonClick" prefHeight="39.0" prefWidth="50.0" styleClass="btn" stylesheets="@CSS.css" text="🡅" textAlignment="CENTER">
          <font>
             <Font size="10.0" />
          </font>

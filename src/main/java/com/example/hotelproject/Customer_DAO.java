@@ -12,7 +12,7 @@ public class Customer_DAO {
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            String sql = "SELECT  * FROM customers ";
+            String sql = "SELECT  * FROM customers WHERE Deleted = 0";
             rs = stmt.executeQuery(sql);
         }
         catch (SQLException e){
@@ -23,8 +23,8 @@ public class Customer_DAO {
     public static ResultSet searchData(String option, String searchText) {
         ResultSet rs;
         try {
-            String query = "SELECT * FROM customers " +
-                    "WHERE " + option + " = ?";
+            String query = "SELECT * FROM customers" +
+                    " WHERE " + option + " = ? AND Deleted = 0";
             PreparedStatement stmt =  connection.prepareStatement(query);
             stmt.setString(1, searchText);
             rs = stmt.executeQuery();
@@ -48,7 +48,7 @@ public class Customer_DAO {
     }
     public static void deleteCustomer(int CustomerID) {
         try {
-            String query = "DELETE FROM customers WHERE CustomerID = ?";
+            String query = "UPDATE customers SET Deleted = 1  WHERE CustomerID = ?";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setInt(1, CustomerID);
             stmt.executeUpdate();

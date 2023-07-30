@@ -195,4 +195,9 @@ public class BookingFixController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
+    @FXML
+    private void onHuyButtonClick(){
+        Stage currenStage = (Stage) i_IDNumber.getScene().getWindow();
+        currenStage.close();
+    }
 }

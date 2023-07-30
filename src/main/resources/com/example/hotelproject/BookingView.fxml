@@ -23,10 +23,10 @@
             <TableColumn fx:id="UserID" prefWidth="109.0" text="Mã NV" />
             </columns>
          </TableView>
-      <Button layoutX="1119.0" layoutY="486.0" mnemonicParsing="false" onAction="#DeleteBtn" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="XÓA" />
-      <Button layoutX="946.0" layoutY="486.0" mnemonicParsing="false" onAction="#FixButtonClicked" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="SỬA" />
-      <Button layoutX="774.0" layoutY="486.0" mnemonicParsing="false" onAction="#addButtonClicked" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="THÊM" />
-      <Button layoutX="600.0" layoutY="485.0" mnemonicParsing="false" onAction="#SearchButton" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="TÌM" />
+      <Button layoutX="1119.0" layoutY="486.0" mnemonicParsing="false" onAction="#DeleteBtn" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="Xóa" />
+      <Button layoutX="946.0" layoutY="486.0" mnemonicParsing="false" onAction="#FixButtonClicked" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="Sửa" />
+      <Button layoutX="774.0" layoutY="486.0" mnemonicParsing="false" onAction="#addButtonClicked" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="Thêm" />
+      <Button layoutX="600.0" layoutY="485.0" mnemonicParsing="false" onAction="#SearchButton" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="Tìm" />
       <ComboBox fx:id="comboBox" layoutX="14.0" layoutY="491.0" prefHeight="39.0" prefWidth="237.0" promptText="Tìm kiếm theo" style="-fx-background-color: #ffffff;" styleClass="btn" />
       <TextField fx:id="t_search" layoutX="287.0" layoutY="491.0" prefHeight="34.0" prefWidth="277.0" style="-fx-background-color: #ffffff;" styleClass="btn" />
       <TableView fx:id="tableView1" layoutY="551.0" prefHeight="199.0" prefWidth="1290.0" styleClass="font-text">

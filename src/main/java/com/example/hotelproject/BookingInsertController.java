@@ -220,4 +220,10 @@ public class BookingInsertController implements Initializable {
         alert.showAndWait();
     }
 
+    @FXML
+    private void onHuyButtonClick(){
+        Stage currenStage = (Stage) i_number.getScene().getWindow();
+        currenStage.close();
+    }
+
 }

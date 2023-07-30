@@ -20,7 +20,7 @@ public class Room_DAO {
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            String sql = "SELECT * FROM Rooms";
+            String sql = "SELECT * FROM Rooms WHERE Deleted = 0";
             rs = stmt.executeQuery(sql);
         } catch (SQLException e) {
             throw new RuntimeException(e);

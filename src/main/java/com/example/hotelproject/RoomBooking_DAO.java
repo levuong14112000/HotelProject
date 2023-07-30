@@ -13,7 +13,7 @@ public class RoomBooking_DAO {
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            String sql = "SELECT  * FROM customer ";
+            String sql = "SELECT  * FROM customer WHERE Deleted = 0 ";
             rs = stmt.executeQuery(sql);
         }
         catch (SQLException e){
@@ -29,7 +29,7 @@ public class RoomBooking_DAO {
                     "roombookings.RoomID,roombookings.CheckInDate ,"+
                     "roombookings.CheckOutDate,roombookings.UserID ,customers.Deleted,roombookings.BookingTime" +
                     " FROM customers " +
-                    "JOIN roombookings ON roombookings.CustomerID = customers.CustomerID";
+                    "JOIN roombookings ON roombookings.CustomerID = customers.CustomerID WHERE roombookings.Deleted = 0";
             PreparedStatement stmt =  connection.prepareStatement(query);
             rs = stmt.executeQuery();
         } catch (SQLException e) {
@@ -41,7 +41,7 @@ public class RoomBooking_DAO {
         ResultSet rs;
         try {
             String query = "SELECT rooms.Status , rooms.RoomID" +
-                    " FROM rooms WHERE RoomID = (SELECT RoomID FROM rooms WHERE RoomNumber = ?)";
+                    " FROM rooms WHERE RoomID = (SELECT RoomID FROM rooms WHERE RoomNumber = ? AND Deleted = 0) AND Deleted = 0";
             PreparedStatement stmt =  connection.prepareStatement(query);
             stmt.setString(1,RoomNumber);
             rs = stmt.executeQuery();
@@ -53,7 +53,7 @@ public class RoomBooking_DAO {
     public static ResultSet showCus() {
         ResultSet rs;
         try {
-            String query = "SELECT * FROM customers";
+            String query = "SELECT * FROM customers WHERE Deleted = 0";
             PreparedStatement stmt =  connection.prepareStatement(query);
             rs = stmt.executeQuery();
         } catch (SQLException e) {
@@ -66,7 +66,7 @@ public class RoomBooking_DAO {
         try {
             String query = "SELECT * FROM roombookings " +
                     "JOIN customers ON roombookings.CustomerID = customers.CustomerID " +
-                    "WHERE " + option + " = ?";
+                    "WHERE " + option + " = ? AND roombookings.Deleted = 0";
             PreparedStatement stmt =  connection.prepareStatement(query);
             stmt.setString(1, searchText);
             rs = stmt.executeQuery();
@@ -131,7 +131,7 @@ public class RoomBooking_DAO {
     }
     public static void deleteBooking(int BookingID) {
         try {
-            String query = "DELETE FROM roombookings WHERE BookingID = ?";
+            String query = "UPDATE roombookings SET Deleted = 1 WHERE BookingID = ?";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setInt(1, BookingID);
             stmt.executeUpdate();

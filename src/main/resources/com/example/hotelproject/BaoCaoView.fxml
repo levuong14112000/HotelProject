@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1290.0" styleClass="color-background" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.ReportController">
+<AnchorPane prefHeight="750.0" prefWidth="1290.0" styleClass="color-background" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.ReportController">
       <children>
          <TableView fx:id="reportTable" prefHeight="399.0" prefWidth="964.0">
             <columns>
@@ -28,12 +28,12 @@
             <Font name="Times New Roman" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="1008.0" layoutY="14.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="In lại" textAlignment="CENTER">
+      <Button layoutX="1008.0" layoutY="56.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="In lại" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="1008.0" layoutY="620.0" mnemonicParsing="false" onAction="#onHuyBillButtonClick" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="Huỷ bill" textAlignment="CENTER">
+      <Button layoutX="1008.0" layoutY="622.0" mnemonicParsing="false" onAction="#onHuyBillButtonClick" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="Huỷ bill" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
@@ -56,27 +56,27 @@
             <TableColumn fx:id="colThanhTien" prefWidth="279.0" text="Thành tiền" />
          </columns>
       </TableView>
-      <Button layoutX="1008.0" layoutY="681.0" mnemonicParsing="false" onAction="#onBillDaHuyButtonClick" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="Bill đã huỷ" textAlignment="CENTER">
+      <Button layoutX="1008.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBillDaHuyButtonClick" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="Bill đã huỷ" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="975.0" layoutY="285.0" mnemonicParsing="false" onAction="#selectNextRow1" prefHeight="50.0" prefWidth="108.0" styleClass="btn" stylesheets="@CSS.css" text="Lên" textAlignment="CENTER">
+      <Button layoutX="970.0" layoutY="157.0" mnemonicParsing="false" onAction="#selectNextRow1" prefHeight="42.0" prefWidth="48.0" styleClass="btn" stylesheets="@CSS.css" text="🡅" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="975.0" layoutY="349.0" mnemonicParsing="false" onAction="#selectPreviousRow1" prefHeight="50.0" prefWidth="108.0" styleClass="btn" stylesheets="@CSS.css" text="Xuống" textAlignment="CENTER">
+      <Button layoutX="970.0" layoutY="221.0" mnemonicParsing="false" onAction="#selectPreviousRow1" prefHeight="42.0" prefWidth="48.0" styleClass="btn" stylesheets="@CSS.css" text="🡇" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="975.0" layoutY="449.0" mnemonicParsing="false" onAction="#selectNextRow2" prefHeight="50.0" prefWidth="108.0" styleClass="btn" stylesheets="@CSS.css" text="Lên" textAlignment="CENTER">
+      <Button layoutX="970.0" layoutY="511.0" mnemonicParsing="false" onAction="#selectNextRow2" prefHeight="42.0" prefWidth="48.0" styleClass="btn" stylesheets="@CSS.css" text="🡅" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="975.0" layoutY="513.0" mnemonicParsing="false" onAction="#selectPreviousRow2" prefHeight="50.0" prefWidth="108.0" styleClass="btn" stylesheets="@CSS.css" text="Xuống" textAlignment="CENTER">
+      <Button layoutX="970.0" layoutY="560.0" mnemonicParsing="false" onAction="#selectPreviousRow2" prefHeight="42.0" prefWidth="48.0" styleClass="btn" stylesheets="@CSS.css" text="🡇" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
