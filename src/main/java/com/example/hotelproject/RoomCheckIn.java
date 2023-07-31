@@ -46,6 +46,12 @@ public class RoomCheckIn {
         this.userID = userID;
     }
 
+    public RoomCheckIn(int checkInID, Time checkInTime, int userID) {
+        this.checkInID =checkInID;
+        this.checkInTime = checkInTime;
+        this.userID = userID;
+    }
+
     // Getters and setters
 
     public int getUserID() {

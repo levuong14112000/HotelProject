@@ -160,4 +160,17 @@ public class User_DAO {
         }
     }
 
+    public static int tranPassword(String pass1, String pass2,int UserID){
+        String readSQL = "UPDATE Users SET Password = ? WHERE Password = ? AND UserID = ?";
+        try {
+            PreparedStatement ppsm = conectDAO.prepareStatement(readSQL);
+            ppsm.setString(1, pass1);
+            ppsm.setString(2, pass2);
+            ppsm.setInt(3, UserID);
+            return ppsm.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

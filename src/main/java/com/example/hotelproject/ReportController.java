@@ -18,6 +18,10 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ReportController implements Initializable {
@@ -103,6 +107,42 @@ public class ReportController implements Initializable {
             }
             selectedRow2 = reportDetailTable.getItems().get(selectedIndex2);
             reportDetailTable.getSelectionModel().select(selectedRow2);
+        }
+    }
+    public static long tinhSoDem(int checkInID) {
+        String checkInTime = RoomCheckIn_DAO.showCheckInInformationWithID(checkInID);
+        String checkOutTime = RoomCheckOut_DAO.showCheckOutInformationWithID(checkInID);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        try {
+            Date startDate = dateFormat.parse(checkInTime);
+            Date endDate = dateFormat.parse(checkOutTime);
+
+            Calendar calStart = Calendar.getInstance();
+            calStart.setTime(startDate);
+            calStart.set(Calendar.HOUR_OF_DAY, 0);
+            calStart.set(Calendar.MINUTE, 0);
+            calStart.set(Calendar.SECOND, 0);
+            calStart.set(Calendar.MILLISECOND, 0);
+
+            Calendar calEnd = Calendar.getInstance();
+            calEnd.setTime(endDate);
+            calEnd.set(Calendar.HOUR_OF_DAY, 0);
+            calEnd.set(Calendar.MINUTE, 0);
+            calEnd.set(Calendar.SECOND, 0);
+            calEnd.set(Calendar.MILLISECOND, 0);
+
+            if (calEnd.before(calStart) || calEnd.equals(calStart)) {
+                return 1;
+            } else {
+                long timeDifference = calEnd.getTimeInMillis() - calStart.getTimeInMillis();
+                long numberOfNights = timeDifference / 86400000;
+                return numberOfNights;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return -1;
         }
     }
 
@@ -305,7 +345,7 @@ public class ReportController implements Initializable {
         tongBillLabel.setText(String.valueOf(stt - 1));
         tongTienLabel.setText(String.valueOf(tongTien));
 
-
+        //Table Bill detail
         reportTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 maHoaDon = newValue.getPaymentID();
@@ -332,6 +372,16 @@ public class ReportController implements Initializable {
                                 reportDetailItems.add(reportDetailItem);
 
                             }
+
+                            int soDem = (int) tinhSoDem(checkInID);
+                            //Lấy đơn giá phòng
+                            double donGiaPhong = RoomType_DAO.getBasePriceByRoomID(roomID);
+                            //Tiền phòng
+                            double tienPhong = soDem * donGiaPhong;
+
+                            ReportDetailItem reportDetailItem = new ReportDetailItem("Số đêm", soDem, donGiaPhong, tienPhong);
+                            reportDetailItems.add(reportDetailItem);
+
                         } catch (SQLException e) {
                             throw new RuntimeException(e);
                         }

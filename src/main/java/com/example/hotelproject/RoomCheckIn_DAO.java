@@ -86,4 +86,35 @@ public class RoomCheckIn_DAO {
         }
         return sum;
     }
+    public static RoomCheckIn getCheckInByRoomID(int roomID) throws SQLException {
+        String query = "SELECT * FROM RoomCheckIns WHERE RoomID = ?";
+        try (
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, roomID);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int checkInID = resultSet.getInt("CheckInID");
+                Time checkInTime = resultSet.getTime("CheckInTime");
+                int userID = resultSet.getInt("UserID");
+
+                return new RoomCheckIn(checkInID, checkInTime, userID);
+            } else {
+                return null;
+            }
+        }
+    }
+    public static void updateRoomID(int checkInID, int newRoomID) throws SQLException {
+        try {
+            String sql = "UPDATE RoomCheckIns SET RoomID = ? WHERE CheckInID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1, newRoomID);
+            preparedStatement.setInt(2, checkInID);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
 }

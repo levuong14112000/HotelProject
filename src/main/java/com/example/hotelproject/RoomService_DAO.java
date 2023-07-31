@@ -16,7 +16,20 @@ public class RoomService_DAO {
         }
         return rs;
     }
+    public static RoomService getRoomServiceByRoomID(int roomID) throws SQLException {
+        String query = "SELECT * FROM RoomServices WHERE RoomID = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, roomID);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int serviceID = resultSet.getInt("ServiceID");
 
+                return new RoomService(roomID, serviceID);
+            } else {
+                return null;
+            }
+        }
+    }
     public static void saveRoomService(RoomService roomService) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -56,8 +69,6 @@ public class RoomService_DAO {
             throw new RuntimeException(e);
         }
     }
-
-
     public static boolean isRoomServiceExist(int roomID, int serviceID, String tenMatHang) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -82,7 +93,6 @@ public class RoomService_DAO {
         }
         return false;
     }
-
     public static ResultSet getRoomServicesByRoomIDAndCheckInID(int roomID, int checkInID) throws SQLException {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -99,6 +109,17 @@ public class RoomService_DAO {
             return resultSet;
         } catch (SQLException e) {
             System.out.println("Failed to fetch room services from the database.");
+            e.printStackTrace();
+            throw e;
+        }
+    }
+    public static void updateService( int newRoomID, int serviceID) throws SQLException {
+        String query = "UPDATE RoomServices SET RoomID = ? WHERE ServiceID = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, newRoomID);
+            statement.setInt(2, serviceID);
+            statement.executeUpdate();
+        }catch (SQLException e) {
             e.printStackTrace();
             throw e;
         }

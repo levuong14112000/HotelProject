@@ -22,12 +22,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="tableViewRoomDetail" prefHeight="682.0" prefWidth="671.0" stylesheets="@CSS.css">
+            <TableView fx:id="tableViewRoomDetail" prefHeight="682.0" prefWidth="721.0" stylesheets="@CSS.css">
                <columns>
                   <TableColumn fx:id="colTenMatHang" prefWidth="276.0" text="Tên mặt hàng" />
                   <TableColumn fx:id="colSoLuong" prefWidth="76.0" text="Số lượng" />
-                  <TableColumn fx:id="colDonGia" minWidth="0.0" prefWidth="123.0" text="Đơn giá" />
-                  <TableColumn fx:id="colThanhTien" prefWidth="195.0" text="Thành tiền" />
+                  <TableColumn fx:id="colDonGia" minWidth="0.0" prefWidth="129.0" text="Đơn giá" />
+                  <TableColumn fx:id="colThanhTien" prefWidth="237.0" text="Thành tiền" />
                </columns>
             </TableView>
             <Label alignment="CENTER_RIGHT" layoutX="838.0" layoutY="72.0" prefHeight="24.0" prefWidth="146.0" text="Tên mặt hàng :">
@@ -40,7 +40,7 @@
                   <Font name="Times New Roman Bold" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="692.0" layoutY="435.0" mnemonicParsing="false" onAction="#onXuongButtonClick" prefHeight="72.0" prefWidth="96.0" styleClass="btn" stylesheets="@CSS.css" text="Xuống" textAlignment="CENTER">
+            <Button layoutX="742.0" layoutY="433.0" mnemonicParsing="false" onAction="#onXuongButtonClick" prefHeight="72.0" prefWidth="96.0" styleClass="btn" stylesheets="@CSS.css" text="Xuống" textAlignment="CENTER">
                <font>
                   <Font size="10.0" />
                </font>
@@ -54,17 +54,17 @@
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font></Label>
-      <Button layoutX="692.0" layoutY="259.0" mnemonicParsing="false" onAction="#onLenButtonClick" prefHeight="72.0" prefWidth="96.0" styleClass="btn" stylesheets="@CSS.css" text="Lên" textAlignment="CENTER">
+      <Button layoutX="742.0" layoutY="257.0" mnemonicParsing="false" onAction="#onLenButtonClick" prefHeight="72.0" prefWidth="96.0" styleClass="btn" stylesheets="@CSS.css" text="Lên" textAlignment="CENTER">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Label fx:id="roomNumber" alignment="CENTER" layoutX="842.0" layoutY="18.0" prefHeight="28.0" prefWidth="200.0" text="RoomNumber" textAlignment="CENTER">
+      <Label fx:id="roomNumber" alignment="CENTER" layoutX="906.0" layoutY="18.0" prefHeight="28.0" prefWidth="200.0" text="RoomNumber" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
       </Label>
-      <Separator layoutX="672.0" layoutY="46.0" prefHeight="24.0" prefWidth="618.0" />
+      <Separator layoutX="720.0" layoutY="46.0" prefHeight="24.0" prefWidth="570.0" />
       <Button layoutX="1006.0" layoutY="232.0" mnemonicParsing="false" onAction="#onXoaButtonClick" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="Xoá" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
@@ -82,6 +82,11 @@
          </font>
       </Button>
       <Button layoutX="1006.0" layoutY="549.0" mnemonicParsing="false" onAction="#onThanhToanButtonClick" prefHeight="122.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="Thanh toán" textAlignment="CENTER">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="730.0" layoutY="686.0" mnemonicParsing="false" onAction="#onChuyenPhongButtonClick" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="Chuyển phòng" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>

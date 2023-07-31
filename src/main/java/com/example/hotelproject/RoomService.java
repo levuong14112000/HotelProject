@@ -14,6 +14,7 @@ public class RoomService {
     private boolean deleted;
 
     // Constructor
+    public  RoomService(){}
     public RoomService(int roomServiceID, int roomID,int checkInID, int serviceID, int quantity, double servicePrice,Timestamp time, boolean deleted) {
         this.roomServiceID = roomServiceID;
         this.roomID = roomID;
@@ -34,6 +35,11 @@ public class RoomService {
         this.time = time;
         this.userID = userID;
         this.deleted = deleted;
+    }
+
+    public RoomService(int roomID, int serviceID) {
+        this.roomID =roomID;
+        this.serviceID =serviceID;
     }
 
     public int getCheckInID() {

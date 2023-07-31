@@ -396,7 +396,13 @@ public class RoomDetailController implements Initializable {
     }
 
 
-    //Button lên/xuoonsg
+    private void showSuccessMessage(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     private void selectNextRow() {
         int rowCount = tableViewRoomDetail.getItems().size();
         if (rowCount > 0) {
@@ -468,6 +474,54 @@ public class RoomDetailController implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void onChuyenPhongButtonClick() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Chuyển phòng");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Nhập số phòng mới:");
+
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(newRoomNumber -> {
+            try {
+                int newRoomID = Room_DAO.getRoomIDByRoomNumber(newRoomNumber);
+
+                if (newRoomID == -1) {
+                    showErrorMessage("Số phòng không tồn tại hoặc đã được sử dụng!");
+                    return;
+                }
+
+                RoomCheckIn checkIn = RoomCheckIn_DAO.getCheckInByRoomID(roomID);
+                if (checkIn != null) {
+                    int newCheckInID = checkIn.getCheckInID();
+                    int oldRoomID = roomID;
+
+                    RoomCheckIn_DAO.updateRoomID(newCheckInID, newRoomID);
+                    Room_DAO.updateRoomStatus(newRoomID, newCheckInID);
+                    Room_DAO.updateRoomStatus(oldRoomID, 0);
+
+                    RoomService roomService = RoomService_DAO.getRoomServiceByRoomID(oldRoomID);
+                    if (roomService != null) {
+                        int serviceID = roomService.getServiceID();
+                        RoomService_DAO.updateService(newRoomID, serviceID);
+                    }
+
+                    showSuccessMessage("Chuyển phòng thành công!");
+                    switchToMainScreen();
+                } else {
+                    showErrorMessage("Không tìm thấy thông tin CheckIn cho phòng đã chọn!");
+                }
+            } catch (SQLException e) {
+                System.out.println("Kết nối dữ liệu thất bại.");
+                e.printStackTrace();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+
+
 
     public static long tinhSoDem(int checkInID) {
         String checkInTime = RoomCheckIn_DAO.showCheckInInformationWithID(checkInID);

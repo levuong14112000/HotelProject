@@ -166,17 +166,21 @@ public class Room_DAO {
             throw new RuntimeException(e);
         }
     }
-    public static ResultSet getRoomIDByRoomNumber(String roomNumber) throws SQLException {
+    public static int getRoomIDByRoomNumber(String roomNumber) throws SQLException {
         ResultSet resultSet;
         try {
-            String query = "SELECT * FROM Rooms WHERE RoomNumber = ?";
+            String query = "SELECT * FROM Rooms WHERE RoomNumber = ? AND Deleted = 0";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, roomNumber);
             resultSet = statement.executeQuery();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return resultSet;
+        if (resultSet.next()) {
+            return resultSet.getInt("RoomID");
+        } else {
+            return -1;
+        }
     }
 
     public static RoomCheckIn getRoomCheckInByRoomID(int roomID) throws SQLException {

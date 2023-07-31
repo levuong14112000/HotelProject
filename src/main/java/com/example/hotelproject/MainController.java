@@ -104,15 +104,12 @@ public class MainController implements Initializable {
     private void onPhongButtonClick() {
         rightPane.getChildren().clear();
         rightPane.getChildren().add(gridPane);
-
         gridPane.setVgap(100);
         gridPane.setHgap(115);
         double newButtonWidth = 150;
         double newButtonHeight = 80;
         Font timesNewRomanFont = new Font("Times New Roman", 24);
-//        Scene scene = sysTime.getScene();
-//        scene.getStylesheets().add(getClass().getResource("CSS.css").toExternalForm());
-
+        Font Time = new Font("Times New Roman", 12);
         try {
             int columnCount = 5;
             int rowCount = 0;
@@ -126,14 +123,21 @@ public class MainController implements Initializable {
                 int status = resultSet.getInt("Status");
                 Button button = new Button(tenPhong);
                 if (status > 0){
-                    button.setStyle("-fx-background-color: #FF0000");
+                    String checkInTime = RoomCheckIn_DAO.showCheckInInformationWithID(status);
+                    button = new Button(tenPhong + "\n" + checkInTime);
+                    button.setStyle(
+                            "  -fx-background-color: RED;" +
+                                    "    -fx-text-alignment: center;" +
+                                    "    -fx-text-fill: #fff;" +
+                                    "    -fx-font-family: 'Times New Roman'; "
+                    );
                 }
                 if (status < 0){
                     button.setStyle("-fx-background-color: #FF9900");
                 }
                 button.setPrefWidth(newButtonWidth);
                 button.setPrefHeight(newButtonHeight);
-                button.setFont(timesNewRomanFont);
+                button.setFont(Time);
                 // Chú ý: Trích dẫn tên của kiểu CSS bằng dấu nháy kép "roomsbookingbutton"
                 // Đảm bảo bạn đã khai báo tên "roomsbookingbutton" trong file CSS.css
 //                if (checkInID < 0) {
@@ -168,6 +172,7 @@ public class MainController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
 
 
     @FXML
@@ -275,23 +280,50 @@ public class MainController implements Initializable {
 
         PasswordField oldPasswordField = new PasswordField();
         PasswordField newPasswordField = new PasswordField();
+        PasswordField confirmPassword = new PasswordField();
 
         oldPasswordField.setPromptText("Mật khẩu cũ");
         newPasswordField.setPromptText("Mật khẩu mới");
+        confirmPassword.setPromptText("Nhập lại khẩu mới");
 
         GridPane grid = new GridPane();
-        grid.add(new Label("Mật khẩu cũ:"), 0, 0);
-        grid.add(oldPasswordField, 1, 0);
-        grid.add(new Label("Mật khẩu mới:"), 0, 1);
-        grid.add(newPasswordField, 1, 1);
+        grid.add(new Label("Mật khẩu cũ:"), 0, 1);
+        grid.add(oldPasswordField, 1, 1);
+        grid.add(new Label("Mật khẩu mới:"), 0, 2);
+        grid.add(newPasswordField, 1, 2);
+        grid.add(new Label("Nhập Lại khẩu mới:"), 0, 3);
+        grid.add(confirmPassword, 1, 3);
         dialog.getDialogPane().setContent(grid);
 
         Optional<String> result = dialog.showAndWait();
-
-        // Kiểm tra kết quả khi người dùng ấn OK
         result.ifPresent(newPassword -> {
+//            int UserID = userId;
             String oldPassword = oldPasswordField.getText();
-
+            String newPass = newPasswordField.getText();
+            String confirmedPassword = confirmPassword.getText();
+            if (!oldPassword.isEmpty() && !newPass.isEmpty() && newPass.equals(confirmedPassword)) {
+//                int UserID1 = Integer.parseInt(UserID);
+                int rowsAffected = User_DAO.tranPassword(confirmedPassword,oldPassword,userId);
+                if (rowsAffected > 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Thành công");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Đổi mật khẩu thành công!");
+                    alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Lỗi");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Mật khẩu cũ không chính xác. Vui lòng thử lại.");
+                    alert.showAndWait();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Lỗi");
+                alert.setHeaderText(null);
+                alert.setContentText("Vui lòng kiểm tra lại mật khẩu cũ và mật khẩu mới");
+                alert.showAndWait();
+            }
         });
     }
 
