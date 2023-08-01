@@ -1,5 +1,11 @@
 package com.example.hotelproject;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.draw.LineSeparator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,6 +19,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -23,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.awt.Desktop;
 
 public class ReportController implements Initializable {
     private int maHoaDon;
@@ -57,6 +67,11 @@ public class ReportController implements Initializable {
     private ReportItem selectedRow1;
     private ReportDetailItem selectedRow2;
     private int selectedIndex1, selectedIndex2;
+    private int userID;
+
+    public void setUserID(int userID){
+        this.userID = userID;
+    }
     @FXML
     private void selectNextRow1() {
         int rowCount = reportTable.getItems().size();
@@ -256,7 +271,197 @@ public class ReportController implements Initializable {
             this.thanhTien = thanhTien;
         }
     }
+    @FXML
+    private void onInLaiButtonClick() {
+        ReportItem selectedReportItem = reportTable.getSelectionModel().getSelectedItem();
+        if (selectedReportItem == null) {
+            return;
+        }
+        exportPDF(selectedReportItem);
+        openPDFFile("payment_data.pdf");
 
+    }
+    private void exportPDF(ReportItem reportItem) {
+        try {
+            Document document = new Document(PageSize.A6);
+
+            BaseFont bf = BaseFont.createFont("src/main/resources/arial-unicode-ms.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font vietnameseFont = new Font(bf, 7, Font.NORMAL, BaseColor.BLACK);
+            Font titleFont = new Font(bf, 12, Font.BOLD, BaseColor.BLACK);
+            Font baseItalicFont = new Font(bf, 7, Font.ITALIC, BaseColor.BLACK);
+            Font baseBoldFont = new Font(bf, 7, Font.BOLD, BaseColor.BLACK);
+
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("payment_data.pdf"));
+            document.open();
+
+            // Tiêu đề của bảng
+            Paragraph header = new Paragraph("PORT COLN Hotel\n", titleFont);
+            header.setAlignment(Element.ALIGN_LEFT);
+            document.add(header);
+            Paragraph address = new Paragraph("Địa chỉ: 01 Lê Duẩn - Phường Bến Nghé - Quận 1 - TPHCM", baseItalicFont);
+            address.setAlignment(Element.ALIGN_LEFT);
+            document.add(address);
+            Paragraph phone = new Paragraph("Điện thoại: (083) 3456 789\n\n", baseItalicFont);
+            phone.setAlignment(Element.ALIGN_LEFT);
+            document.add(phone);
+            Paragraph title = new Paragraph("HOÁ ĐƠN THANH TOÁN", titleFont);
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
+
+            LineSeparator lineSeparator = new LineSeparator();
+            lineSeparator.setLineColor(BaseColor.BLACK);
+            lineSeparator.setLineWidth(1f);
+            Chunk lineChunk = new Chunk(lineSeparator);
+            document.add(lineChunk);
+
+            Paragraph id = new Paragraph("Mã hoá đơn : " + maHoaDon, baseBoldFont);
+            document.add(id);
+
+            Paragraph checkInTime = new Paragraph("Check in : " +reportItem.getGioCheckIn(), vietnameseFont);
+            document.add(checkInTime);
+
+            Paragraph checkOutTime = new Paragraph("Check out : " +reportItem.getGioCheckOut(), vietnameseFont);
+            document.add(checkOutTime);
+
+            String name = User_DAO.showNameByUserID(userID);
+            Paragraph empoyee = new Paragraph("Nhân viên : " + name, vietnameseFont);
+            document.add(empoyee);
+
+            // Tạo bảng để xuất dữ liệu từ TableView
+            PdfPTable table = new PdfPTable(4); // 4 cột trong TableView
+            table.setWidthPercentage(100); // Chiếm toàn bộ trang
+            table.setSpacingBefore(10f);
+            table.setSpacingAfter(10f);
+
+            // Đặt các tiêu đề cột cho bảng
+            PdfPCell cell = new PdfPCell(new Phrase("Tên dịch vụ", baseBoldFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase("Số lượng", baseBoldFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase("Đơn giá", baseBoldFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase("Thành tiền", baseBoldFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+
+            double chietKhauValue = 0;
+            double phuThuValue = 0;
+            double tongTien = 0;
+
+            // Lặp qua các dòng trong TableView và thêm dữ liệu vào bảng
+            for (Object obj : reportDetailTable.getItems()) {
+                if (obj instanceof ReportController.ReportDetailItem) {
+                    ReportController.ReportDetailItem item = (ReportController.ReportDetailItem) obj;
+
+                    if (item.getTenMatHang().equals("Chiết khấu")) {
+                        chietKhauValue = item.getThanhTien();
+                    }else if (item.getTenMatHang().equals("Phụ thu")){
+                        phuThuValue = item.getThanhTien();
+                    } else if (!item.getTenMatHang().equals("Chiết khấu") && !item.getTenMatHang().equals("Phụ thu")) {
+                        table.addCell(new Phrase(item.getTenMatHang(), vietnameseFont));
+                        PdfPCell cellSoLuong = new PdfPCell(new Phrase(String.valueOf(item.getSoLuong()), vietnameseFont));
+                        cellSoLuong.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                        table.addCell(cellSoLuong);
+
+                        PdfPCell cellDonGia = new PdfPCell(new Phrase(String.valueOf(item.getDonGia()), vietnameseFont));
+                        cellDonGia.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                        table.addCell(cellDonGia);
+
+                        PdfPCell cellThanhTien = new PdfPCell(new Phrase(String.valueOf(item.getThanhTien()), vietnameseFont));
+                        cellThanhTien.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                        table.addCell(cellThanhTien);
+                        tongTien += item.getThanhTien();
+                    }
+                }
+            }
+
+            document.add(table);
+
+            PdfPTable table2 = new PdfPTable(2);
+            table2.setWidthPercentage(60);
+            PdfPCell cellCenter2 = new PdfPCell();
+            Paragraph centerParagraph2 = new Paragraph("\t\t\tTổng cộng : ", baseBoldFont);
+            centerParagraph2.setAlignment(Element.ALIGN_LEFT);
+            cellCenter2.addElement(centerParagraph2);
+            cellCenter2.setBorder(Rectangle.NO_BORDER);
+            PdfPCell cellRight2 = new PdfPCell();
+            Paragraph rightParagraph2 = new Paragraph(String.valueOf(tongTien), baseBoldFont);
+            rightParagraph2.setAlignment(Element.ALIGN_RIGHT);
+            cellRight2.addElement(rightParagraph2);
+            cellRight2.setBorder(Rectangle.NO_BORDER);
+
+            PdfPCell cellCenter3 = new PdfPCell();
+            Paragraph centerParagraph3 = new Paragraph("\t\t\tChiết khấu : ", baseBoldFont);
+            centerParagraph3.setAlignment(Element.ALIGN_LEFT);
+            cellCenter3.addElement(centerParagraph3);
+            cellCenter3.setBorder(Rectangle.NO_BORDER);
+            PdfPCell cellRight3 = new PdfPCell();
+            Paragraph rightParagraph3 = new Paragraph(String.valueOf(chietKhauValue*-1), baseBoldFont);
+            rightParagraph3.setAlignment(Element.ALIGN_RIGHT);
+            cellRight3.addElement(rightParagraph3);
+            cellRight3.setBorder(Rectangle.NO_BORDER);
+
+            PdfPCell cellCenter4 = new PdfPCell();
+            Paragraph centerParagraph4 = new Paragraph("\t\t\tPhụ thu : ", baseBoldFont);
+            centerParagraph4.setAlignment(Element.ALIGN_LEFT);
+            cellCenter4.addElement(centerParagraph4);
+            cellCenter4.setBorder(Rectangle.NO_BORDER);
+            PdfPCell cellRight4 = new PdfPCell();
+            Paragraph rightParagraph4 = new Paragraph(String.valueOf(phuThuValue), baseBoldFont);
+            rightParagraph4.setAlignment(Element.ALIGN_RIGHT);
+            cellRight4.addElement(rightParagraph4);
+            cellRight4.setBorder(Rectangle.NO_BORDER);
+
+            double thanhToan = tongTien - chietKhauValue*-1 + phuThuValue;
+            PdfPCell cellCenter5 = new PdfPCell();
+            Paragraph centerParagraph5 = new Paragraph("\t\t\tThanh toán : ", baseBoldFont);
+            centerParagraph5.setAlignment(Element.ALIGN_LEFT);
+            cellCenter5.addElement(centerParagraph5);
+            cellCenter5.setBorder(Rectangle.NO_BORDER);
+            PdfPCell cellRight5 = new PdfPCell();
+            Paragraph rightParagraph5 = new Paragraph(String.valueOf(thanhToan), baseBoldFont);
+            rightParagraph5.setAlignment(Element.ALIGN_RIGHT);
+            cellRight5.addElement(rightParagraph5);
+            cellRight5.setBorder(Rectangle.NO_BORDER);
+
+            table2.addCell(cellCenter2);
+            table2.addCell(cellRight2);
+            table2.addCell(cellCenter3);
+            table2.addCell(cellRight3);
+            table2.addCell(cellCenter4);
+            table2.addCell(cellRight4);
+            table2.addCell(cellCenter5);
+            table2.addCell(cellRight5);
+
+            document.add(table2);
+            table2.setSpacingAfter(0f);
+
+            Paragraph thanks = new Paragraph("\n\n\nCảm ơn và hẹn gặp lại quý khách !", baseItalicFont);
+            thanks.setAlignment(Element.ALIGN_CENTER);
+            document.add(thanks);
+
+
+            document.close();
+            System.out.println("Xuất dữ liệu thành công vào file payment_data.pdf");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void openPDFFile(String filePath) {
+        try {
+            File file = new File(filePath);
+            if (file.exists()) {
+                Desktop.getDesktop().open(file);
+            } else {
+                System.out.println("File not found.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void onHuyBillButtonClick() {
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
@@ -381,6 +586,17 @@ public class ReportController implements Initializable {
 
                             ReportDetailItem reportDetailItem = new ReportDetailItem("Số đêm", soDem, donGiaPhong, tienPhong);
                             reportDetailItems.add(reportDetailItem);
+
+                            double chietKhau = resultSetPayment.getDouble("Discount");
+                            if (chietKhau > 0){
+                                ReportDetailItem reportDetailItemChietKhau = new ReportDetailItem("Chiết khấu", 1, chietKhau*-1, chietKhau*-1);
+                                reportDetailItems.add(reportDetailItemChietKhau);
+                            }
+                            double phuThu = resultSetPayment.getDouble("ExtraCharge");
+                            if (phuThu > 0){
+                                ReportDetailItem reportDetailItemGiamGia = new ReportDetailItem("Phụ thu", 1, phuThu, phuThu);
+                                reportDetailItems.add(reportDetailItemGiamGia);
+                            }
 
                         } catch (SQLException e) {
                             throw new RuntimeException(e);

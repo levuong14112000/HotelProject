@@ -53,27 +53,6 @@ public class User_DAO {
 
         return resultSet;
     }
-    public static void changePassword(int userID) {
-        try {
-            String query = "UPDATE Users SET Password = ? WHERE UserID = ?";
-            PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setInt(1, userID);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-//    public static String checkPassword(int userID){
-//        String password;
-//        try {
-//            String query = "SELECT Password FROM Users WHERE UserID = ?";
-//            PreparedStatement stmt = connection.prepareStatement(query);
-//            stmt.setInt(1, userID);
-//            stmt.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     private static User_DAO instance = null;
     private static ArrayList<User> listUser;
@@ -171,6 +150,27 @@ public class User_DAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String showNameByUserID(int userID) throws SQLException {
+        String name = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            String query = "SELECT * FROM Users WHERE Deleted = 0 AND UserID = ?";
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, userID);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                name = resultSet.getString("FullName");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return name;
     }
 
 }

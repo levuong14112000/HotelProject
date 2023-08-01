@@ -152,14 +152,6 @@ public class RoomDetailController implements Initializable {
     public void setUserData(String userData) {
         this.userData = userData;
     }
-
-    //    public void setCheckInID(int checkInID) {
-//        this.checkInID = checkInID;
-//    }
-//    public void setCheckInIDAndInitialize(int checkInID) {
-//        this.checkInID = checkInID;
-//        initialize(null, null);
-//    }
     public void setDataAndInitialize(String userData) {
         this.userData = userData;
         initialize(null, null);
@@ -183,11 +175,6 @@ public class RoomDetailController implements Initializable {
 
             MainController mainController = loader.getController();
             mainController.initializeWithData(userId, checkInID);
-//            mainController.setCheckInID(checkInID);
-//            mainController.setCheckInIDAndInitialize(checkInID);
-
-//            System.out.println("roomdetail, trước khi qua main " +checkInID);
-
 
             Scene scene = new Scene(root);
             Stage stage = (Stage) roomNumber.getScene().getWindow();
@@ -438,7 +425,6 @@ public class RoomDetailController implements Initializable {
     private void onXuongButtonClick() {
         selectNextRow();
     }
-
     @FXML
     private void onThanhToanButtonClick() {
 
@@ -458,12 +444,14 @@ public class RoomDetailController implements Initializable {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("RoomPaymentView.fxml"));
             Parent roomPaymentView = loader.load();
+//            Scene scene = new Scene(root);
 
             Scene currentScene = roomNumber.getScene();
             RoomPaymentController roomPaymentController = loader.getController();
             roomPaymentController.setTransData(userId, checkInID, userData, currentScene);
             roomPaymentController.setTransDataAndInitialize(userId, checkInID, userData, currentScene);
             roomPaymentController.setRoomData(itemList, calculateTotalAmount());
+            roomPaymentController.setPreviousScene(roomNumber.getScene());
 
             currentScene.setRoot(roomPaymentView);
             // Ẩn cửa sổ chính (Main)

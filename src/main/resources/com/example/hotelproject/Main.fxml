@@ -74,7 +74,7 @@
                   <Font name="Times New Roman Bold" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="13.0" layoutY="487.0" mnemonicParsing="false" onAction="#onNhanVienButtonClick" prefHeight="50.0" prefWidth="240.0" styleClass="btn" stylesheets="@CSS.css" text="Nhân Viên">
+            <Button fx:id="btnNhanVien" layoutX="13.0" layoutY="487.0" mnemonicParsing="false" onAction="#onNhanVienButtonClick" prefHeight="50.0" prefWidth="240.0" styleClass="btn" stylesheets="@CSS.css" text="Nhân Viên">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -82,7 +82,7 @@
                   <Font name="Times New Roman Bold" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="11.0" layoutY="250.0" mnemonicParsing="false" onAction="#onDanhSachPhongButtonClick" prefHeight="50.0" prefWidth="240.0" styleClass="btn" stylesheets="@CSS.css" text="Danh Sách Phòng">
+            <Button fx:id="btnDanhSachPhong" layoutX="11.0" layoutY="250.0" mnemonicParsing="false" onAction="#onDanhSachPhongButtonClick" prefHeight="50.0" prefWidth="240.0" styleClass="btn" stylesheets="@CSS.css" text="Danh Sách Phòng">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -90,7 +90,7 @@
                   <Font name="Times New Roman Bold" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="309.0" mnemonicParsing="false" onAction="#onLoaiPhongButtonClick" prefHeight="50.0" prefWidth="240.0" styleClass="btn" stylesheets="@CSS.css" text="Loại Phòng">
+            <Button fx:id="btnLoaiPhong" layoutX="12.0" layoutY="309.0" mnemonicParsing="false" onAction="#onLoaiPhongButtonClick" prefHeight="50.0" prefWidth="240.0" styleClass="btn" stylesheets="@CSS.css" text="Loại Phòng">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -98,7 +98,7 @@
                   <Font name="Times New Roman Bold" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="368.0" mnemonicParsing="false" onAction="#onHangHoaButtonClick" prefHeight="50.0" prefWidth="240.0" styleClass="btn" stylesheets="@CSS.css" text="Dịch Vụ">
+            <Button fx:id="btnDichVu" layoutX="12.0" layoutY="368.0" mnemonicParsing="false" onAction="#onHangHoaButtonClick" prefHeight="50.0" prefWidth="240.0" styleClass="btn" stylesheets="@CSS.css" text="Dịch Vụ">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -106,7 +106,7 @@
                   <Font name="Times New Roman Bold" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="13.0" layoutY="427.0" mnemonicParsing="false" onAction="#CustomerButtonOnClick" prefHeight="50.0" prefWidth="240.0" styleClass="btn" stylesheets="@CSS.css" text="Khách Hàng">
+            <Button fx:id="btnKhachHang" layoutX="13.0" layoutY="427.0" mnemonicParsing="false" onAction="#CustomerButtonOnClick" prefHeight="50.0" prefWidth="240.0" styleClass="btn" stylesheets="@CSS.css" text="Khách Hàng">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

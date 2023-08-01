@@ -32,6 +32,8 @@ public class MainController implements Initializable {
     private StackPane rightPane;
     @FXML
     private Label fullNameLabel, sysTime;
+    @FXML
+    private Button btnDanhSachPhong, btnLoaiPhong, btnDichVu, btnKhachHang, btnNhanVien;
     private GridPane gridPane = new GridPane();
     private int userId;
     private int checkInID;
@@ -60,7 +62,6 @@ public class MainController implements Initializable {
         String formattedDateTime = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
         sysTime.setText(formattedDateTime);
     }
-
     private void openRoom(String userData) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("OpenRoom.fxml"));
@@ -99,6 +100,7 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     private void onPhongButtonClick() {
@@ -172,9 +174,6 @@ public class MainController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
-
-
     @FXML
     private void onHangHoaButtonClick() {
         rightPane.getChildren().clear();
@@ -185,7 +184,6 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
-
     @FXML
     private void onDanhSachPhongButtonClick() {
         rightPane.getChildren().clear();
@@ -206,7 +204,6 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
-
     @FXML
     private void onNhanVienButtonClick() {
         rightPane.getChildren().clear();
@@ -217,13 +214,15 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
-
     @FXML
     private void onBaoCaoButtonClick() {
         rightPane.getChildren().clear();
         try {
-            Parent baocaoView = FXMLLoader.load(getClass().getResource("BaoCaoView.fxml"));
-            rightPane.getChildren().setAll(baocaoView);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("BaoCaoView.fxml"));
+            Parent root = loader.load();
+            ReportController reportController = loader.getController();
+            reportController.setUserID(userId);
+            rightPane.getChildren().setAll(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -244,17 +243,12 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
-
     @FXML
     private void CustomerButtonOnClick() {
         rightPane.getChildren().clear();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("customerview.fxml"));
             Parent customer = loader.load();
-
-//            RoomBookingController roomBookingController = loader.getController();
-//            roomBookingController.setUserId(userId);
-//            roomBookingController.setUserIDAndInitialize(userId);
 
             rightPane.getChildren().setAll(customer);
         } catch (IOException e) {
@@ -271,7 +265,6 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
-
     @FXML
     private void onDoiMatKhauButtonClick() {
         TextInputDialog dialog = new TextInputDialog();
@@ -326,7 +319,6 @@ public class MainController implements Initializable {
             }
         });
     }
-
     @FXML
     private void onThoatButtonClick() {
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
@@ -338,9 +330,21 @@ public class MainController implements Initializable {
             stage.close();
         }
     }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (userId == 99){
+            btnDanhSachPhong.setVisible(true);
+            btnLoaiPhong.setVisible(true);
+            btnDichVu.setVisible(true);
+            btnKhachHang.setVisible(true);
+            btnNhanVien.setVisible(true);
+        }else {
+            btnDanhSachPhong.setVisible(false);
+            btnLoaiPhong.setVisible(false);
+            btnDichVu.setVisible(false);
+            btnKhachHang.setVisible(false);
+            btnNhanVien.setVisible(false);
+        }
         onPhongButtonClick();
 
         try {

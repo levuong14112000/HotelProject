@@ -143,4 +143,25 @@ public class RoomPayment_DAO {
         return sum;
     }
 
+    public static int showIDWithCheckInID(int checkInID) throws SQLException {
+        int paymentID = 0;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            String query = "SELECT * FROM RoomPayments WHERE Deleted = 0 AND CheckInID = ?";
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, checkInID);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                paymentID = resultSet.getInt("PaymentID");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return paymentID;
+    }
+
 }

@@ -3,6 +3,7 @@ module com.example.hotelproject {
     requires javafx.fxml;
     requires java.sql;
     requires itextpdf;
+    requires java.desktop;
 
 
     opens com.example.hotelproject to javafx.fxml;

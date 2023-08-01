@@ -1,7 +1,10 @@
 package com.example.hotelproject;
 
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.pdf.draw.LineSeparator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,13 +13,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -24,6 +29,8 @@ import java.io.FileOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.sql.Time;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
@@ -47,7 +54,7 @@ public class RoomPaymentController implements Initializable {
     private Scene previousScene;
     List<RoomDetailController.Item> newItems = new ArrayList<>();
     @FXML
-    private Button returnMain;
+    private Button returnMain, btnTroVeTruoc;
     @FXML
     private TableView paymentTable;
     @FXML
@@ -62,7 +69,6 @@ public class RoomPaymentController implements Initializable {
     private Label txtThanhTien, txtPhuThu,txtGiamGia, txtThanhToan;
     private ObservableList<RoomDetailController.Item> itemList;
     private HashMap<String, ItemPayment> itemQuantityMap = new HashMap<>();
-
     public class ItemPayment {
         private String tenMatHang;
         private int tongSoLuong;
@@ -114,10 +120,6 @@ public class RoomPaymentController implements Initializable {
         }
     }
 
-
-    //    public void setPreviousScene(Scene scene) {
-//        this.previousScene = scene;
-//    }
     public void setTransData(int userId, int checkInID, String userData, Scene scene) {
         this.userId = userId;
         this.checkInID = checkInID;
@@ -169,6 +171,9 @@ public class RoomPaymentController implements Initializable {
 
         ObservableList<ItemPayment> paymentItemList = FXCollections.observableArrayList(itemQuantityMap.values());
         paymentTable.setItems(paymentItemList);
+    }
+    public void setPreviousScene(Scene scene) {
+        this.previousScene = scene;
     }
 
     private void switchToMainScreen() {
@@ -284,23 +289,57 @@ public class RoomPaymentController implements Initializable {
         });
     }
     @FXML
-    private void onExportPDFButtonClick() {
+    private void onExportPDFButtonClick(double roomCharge, double extraCharge, double discount) {
         try {
             // Tạo đối tượng Document với kích thước khổ giấy A5
-            Document document = new Document(PageSize.A5);
+            Document document = new Document(PageSize.A6);
 
             // Sử dụng font chữ tiếng Việt (times.ttf) từ file
             BaseFont bf = BaseFont.createFont("src/main/resources/arial-unicode-ms.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-            Font vietnameseFont = new Font(bf, 12, Font.NORMAL, BaseColor.BLACK);
+            Font vietnameseFont = new Font(bf, 7, Font.NORMAL, BaseColor.BLACK);
+            Font titleFont = new Font(bf, 12, Font.BOLD, BaseColor.BLACK);
+            Font baseItalicFont = new Font(bf, 7,Font.ITALIC, BaseColor.BLACK);
+            Font baseBoldFont = new Font(bf,7, Font.BOLD, BaseColor.BLACK);
 
             // Ghi dữ liệu vào tài liệu PDF
-            PdfWriter.getInstance(document, new FileOutputStream("payment_data.pdf"));
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("payment_data.pdf"));
             document.open();
 
             // Tiêu đề của bảng
-            Paragraph title = new Paragraph("Dữ liệu thanh toán phòng", vietnameseFont);
+            Paragraph header = new Paragraph("PORT COLN Hotel\n", titleFont);
+            header.setAlignment(Element.ALIGN_LEFT);
+            document.add(header);
+            Paragraph address = new Paragraph("Địa chỉ: 01 Lê Duẩn - Phường Bến Nghé - Quận 1 - TPHCM", baseItalicFont);
+            address.setAlignment(Element.ALIGN_LEFT);
+            document.add(address);
+            Paragraph phone = new Paragraph("Điện thoại: (083) 3456 789\n\n", baseItalicFont);
+            phone.setAlignment(Element.ALIGN_LEFT);
+            document.add(phone);
+            Paragraph title = new Paragraph("HOÁ ĐƠN THANH TOÁN", titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
             document.add(title);
+
+            LineSeparator lineSeparator = new LineSeparator();
+            lineSeparator.setLineColor(BaseColor.BLACK);
+            lineSeparator.setLineWidth(1f);
+            Chunk lineChunk = new Chunk(lineSeparator);
+            document.add(lineChunk);
+
+            int paymentID = RoomPayment_DAO.showIDWithCheckInID(checkInID);
+            Paragraph id = new Paragraph("Mã hoá đơn : " + paymentID, baseBoldFont);
+            document.add(id);
+
+            String checkInStr = RoomCheckIn_DAO.showCheckInInformationWithID(checkInID);
+            Paragraph checkInTime = new Paragraph("Check in : " +checkInStr, vietnameseFont);
+            document.add(checkInTime);
+
+            String checkOutStr = RoomCheckOut_DAO.showCheckOutInformationWithID(checkInID);
+            Paragraph checkOutTime = new Paragraph("Check out : " +checkOutStr, vietnameseFont);
+            document.add(checkOutTime);
+
+            String name = User_DAO.showNameByUserID(userId);
+            Paragraph empoyee = new Paragraph("Nhân viên : " + name, vietnameseFont);
+            document.add(empoyee);
 
             // Tạo bảng để xuất dữ liệu từ TableView
             PdfPTable table = new PdfPTable(4); // 4 cột trong TableView
@@ -309,28 +348,109 @@ public class RoomPaymentController implements Initializable {
             table.setSpacingAfter(10f);
 
             // Đặt các tiêu đề cột cho bảng
-            PdfPCell cell = new PdfPCell(new Phrase("Tên Mặt Hàng", vietnameseFont));
+            PdfPCell cell = new PdfPCell(new Phrase("Tên dịch vụ", baseBoldFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
-            cell = new PdfPCell(new Phrase("Số Lượng", vietnameseFont));
+            cell = new PdfPCell(new Phrase("Số lượng", baseBoldFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
-            cell = new PdfPCell(new Phrase("Đơn Giá", vietnameseFont));
+            cell = new PdfPCell(new Phrase("Đơn giá", baseBoldFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
-            cell = new PdfPCell(new Phrase("Thành Tiền", vietnameseFont));
+            cell = new PdfPCell(new Phrase("Thành tiền", baseBoldFont));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
 
             // Lặp qua các dòng trong TableView và thêm dữ liệu vào bảng
             for (Object obj : paymentTable.getItems()) {
                 if (obj instanceof ItemPayment) {
                     ItemPayment item = (ItemPayment) obj;
+
                     table.addCell(new Phrase(item.getTenMatHang(), vietnameseFont));
-                    table.addCell(new Phrase(String.valueOf(item.getTongSoLuong()), vietnameseFont));
-                    table.addCell(new Phrase(String.valueOf(item.getDonGia()), vietnameseFont));
-                    table.addCell(new Phrase(String.valueOf(item.getThanhTien()), vietnameseFont));
+                    PdfPCell cellSoLuong = new PdfPCell(new Phrase(String.valueOf(item.getTongSoLuong()), vietnameseFont));
+                    cellSoLuong.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                    table.addCell(cellSoLuong);
+
+                    PdfPCell cellDonGia = new PdfPCell(new Phrase(String.valueOf(item.getDonGia()), vietnameseFont));
+                    cellDonGia.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                    table.addCell(cellDonGia);
+
+                    PdfPCell cellThanhTien = new PdfPCell(new Phrase(String.valueOf(item.getThanhTien()), vietnameseFont));
+                    cellThanhTien.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                    table.addCell(cellThanhTien);
                 }
             }
-
-            // Thêm bảng vào document
             document.add(table);
+
+//            Paragraph tongCong = new Paragraph("Tổng cộng :\t\t\t" + roomCharge, baseBoldFont);
+//            tongCong.setAlignment(Element.ALIGN_RIGHT);
+//            document.add(tongCong);
+//            Paragraph chietKhau = new Paragraph("Chiết khấu :\t\t\t" + discount, baseBoldFont);
+//            chietKhau.setAlignment(Element.ALIGN_RIGHT);
+//            document.add(chietKhau);
+
+            PdfPTable table2 = new PdfPTable(2);
+            table2.setWidthPercentage(60);
+            PdfPCell cellCenter2 = new PdfPCell();
+            Paragraph centerParagraph2 = new Paragraph("\t\t\tTổng cộng : ", baseBoldFont);
+            centerParagraph2.setAlignment(Element.ALIGN_LEFT);
+            cellCenter2.addElement(centerParagraph2);
+            cellCenter2.setBorder(Rectangle.NO_BORDER);
+            PdfPCell cellRight2 = new PdfPCell();
+            Paragraph rightParagraph2 = new Paragraph(String.valueOf(roomCharge), baseBoldFont);
+            rightParagraph2.setAlignment(Element.ALIGN_RIGHT);
+            cellRight2.addElement(rightParagraph2);
+            cellRight2.setBorder(Rectangle.NO_BORDER);
+
+            PdfPCell cellCenter3 = new PdfPCell();
+            Paragraph centerParagraph3 = new Paragraph("\t\t\tChiết khấu : ", baseBoldFont);
+            centerParagraph3.setAlignment(Element.ALIGN_LEFT);
+            cellCenter3.addElement(centerParagraph3);
+            cellCenter3.setBorder(Rectangle.NO_BORDER);
+            PdfPCell cellRight3 = new PdfPCell();
+            Paragraph rightParagraph3 = new Paragraph(String.valueOf(discount), baseBoldFont);
+            rightParagraph3.setAlignment(Element.ALIGN_RIGHT);
+            cellRight3.addElement(rightParagraph3);
+            cellRight3.setBorder(Rectangle.NO_BORDER);
+
+            PdfPCell cellCenter4 = new PdfPCell();
+            Paragraph centerParagraph4 = new Paragraph("\t\t\tPhụ thu : ", baseBoldFont);
+            centerParagraph4.setAlignment(Element.ALIGN_LEFT);
+            cellCenter4.addElement(centerParagraph4);
+            cellCenter4.setBorder(Rectangle.NO_BORDER);
+            PdfPCell cellRight4 = new PdfPCell();
+            Paragraph rightParagraph4 = new Paragraph(String.valueOf(extraCharge), baseBoldFont);
+            rightParagraph4.setAlignment(Element.ALIGN_RIGHT);
+            cellRight4.addElement(rightParagraph4);
+            cellRight4.setBorder(Rectangle.NO_BORDER);
+
+            double total = roomCharge - discount + extraCharge;
+            PdfPCell cellCenter5 = new PdfPCell();
+            Paragraph centerParagraph5 = new Paragraph("\t\t\tThanh toán : ", baseBoldFont);
+            centerParagraph5.setAlignment(Element.ALIGN_LEFT);
+            cellCenter5.addElement(centerParagraph5);
+            cellCenter5.setBorder(Rectangle.NO_BORDER);
+            PdfPCell cellRight5 = new PdfPCell();
+            Paragraph rightParagraph5 = new Paragraph(String.valueOf(total), baseBoldFont);
+            rightParagraph5.setAlignment(Element.ALIGN_RIGHT);
+            cellRight5.addElement(rightParagraph5);
+            cellRight5.setBorder(Rectangle.NO_BORDER);
+
+            table2.addCell(cellCenter2);
+            table2.addCell(cellRight2);
+            table2.addCell(cellCenter3);
+            table2.addCell(cellRight3);
+            table2.addCell(cellCenter4);
+            table2.addCell(cellRight4);
+            table2.addCell(cellCenter5);
+            table2.addCell(cellRight5);
+
+            document.add(table2);
+            table2.setSpacingAfter(0f);
+
+            Paragraph thanks = new Paragraph("\n\n\nCảm ơn và hẹn gặp lại quý khách !", baseItalicFont);
+            thanks.setAlignment(Element.ALIGN_CENTER);
+            document.add(thanks);
 
             document.close();
             System.out.println("Xuất dữ liệu thành công vào file payment_data.pdf");
@@ -338,6 +458,8 @@ public class RoomPaymentController implements Initializable {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -366,6 +488,18 @@ public class RoomPaymentController implements Initializable {
 
         return decimalFormat.format(number);
     }
+    private void openPDFFile(String filePath) {
+        try {
+            File file = new File(filePath);
+            if (file.exists()) {
+                Desktop.getDesktop().open(file);
+            } else {
+                System.out.println("File not found.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void onCASHButtonClick(){
@@ -379,15 +513,19 @@ public class RoomPaymentController implements Initializable {
         double discount = convertAmount(txtGiamGia.getText());
 
         RoomPayment_DAO.createRoomPayment(customerID, roomID, checkInID, checkOutID, roomCharge, extraCharge, discount, userId);
-        onExportPDFButtonClick();
+        onExportPDFButtonClick(roomCharge, extraCharge, discount);
+        openPDFFile("payment_data.pdf");
         Room_DAO.updateRoomStatus(roomID, 0);
         switchToMainScreen();
     }
     @FXML
     private void onTroVeTruocButtonClick() {
+        System.out.println("Đẫ click");
+        System.out.println(previousScene);
         if (previousScene != null) {
-            Stage currentStage = (Stage) returnMain.getScene().getWindow();
+            Stage currentStage = (Stage) btnTroVeTruoc.getScene().getWindow();
             currentStage.setScene(previousScene);
+            System.out.println("Không null");
         } else {
             System.out.println("Không có giao diện trước đó");
         }

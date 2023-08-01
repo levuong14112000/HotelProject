@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1290.0" styleClass="color-background" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.ReportController">
+<AnchorPane prefHeight="750.0" prefWidth="1290.0" styleClass="color-background" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.ReportController">
       <children>
          <TableView fx:id="reportTable" prefHeight="399.0" prefWidth="964.0">
             <columns>
                <TableColumn fx:id="colSoBill" prefWidth="48.0" text="STT" />
             <TableColumn fx:id="colMaBill" prefWidth="98.99996948242188" text="Mã Bill" />
                <TableColumn fx:id="colTenPhong" prefWidth="192.0" text="Tên phòng" />
-               <TableColumn fx:id="colGioCheckIn" minWidth="0.0" prefWidth="215.0" text="Checkin" />
+               <TableColumn fx:id="colGioCheckIn" minWidth="0.0" prefWidth="189.0" text="Checkin" />
                <TableColumn fx:id="colGioCheckOut" prefWidth="189.0" text="Checkout" />
-            <TableColumn fx:id="colTriGia" prefWidth="220.0" text="Trị giá" />
+            <TableColumn fx:id="colTriGia" prefWidth="242.0" text="Trị giá" />
             </columns>
          </TableView>
       <Label layoutX="14.0" layoutY="711.0" prefHeight="23.0" prefWidth="86.0" text="Tổng bill :">
@@ -28,7 +28,7 @@
             <Font name="Times New Roman" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="1008.0" layoutY="56.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="In lại" textAlignment="CENTER">
+      <Button layoutX="1008.0" layoutY="14.0" mnemonicParsing="false" onAction="#onInLaiButtonClick" prefHeight="50.0" prefWidth="268.0" styleClass="btn" stylesheets="@CSS.css" text="In lại" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
@@ -38,14 +38,14 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Label layoutX="654.0" layoutY="711.0" prefHeight="20.0" prefWidth="93.0" text="Tổng tiền :">
+      <Label layoutX="609.0" layoutY="711.0" prefHeight="20.0" prefWidth="93.0" text="Tổng tiền :">
          <font>
             <Font name="Times New Roman" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="tongTienLabel" alignment="CENTER_RIGHT" layoutX="782.0" layoutY="711.0" prefHeight="22.0" prefWidth="182.0" text="10" textFill="RED">
+      <Label fx:id="tongTienLabel" alignment="CENTER_RIGHT" layoutX="714.0" layoutY="711.0" prefHeight="23.0" prefWidth="250.0" text="10">
          <font>
-            <Font name="Times New Roman" size="20.0" />
+            <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Label>
       <TableView fx:id="reportDetailTable" layoutY="449.0" prefHeight="244.0" prefWidth="964.0">
@@ -61,12 +61,12 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="970.0" layoutY="157.0" mnemonicParsing="false" onAction="#selectNextRow1" prefHeight="42.0" prefWidth="48.0" styleClass="btn" stylesheets="@CSS.css" text="🡅" textAlignment="CENTER">
+      <Button layoutX="970.0" layoutY="235.0" mnemonicParsing="false" onAction="#selectNextRow1" prefHeight="42.0" prefWidth="48.0" styleClass="btn" stylesheets="@CSS.css" text="🡅" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="970.0" layoutY="221.0" mnemonicParsing="false" onAction="#selectPreviousRow1" prefHeight="42.0" prefWidth="48.0" styleClass="btn" stylesheets="@CSS.css" text="🡇" textAlignment="CENTER">
+      <Button layoutX="970.0" layoutY="185.0" mnemonicParsing="false" onAction="#selectPreviousRow1" prefHeight="42.0" prefWidth="48.0" styleClass="btn" stylesheets="@CSS.css" text="🡇" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>

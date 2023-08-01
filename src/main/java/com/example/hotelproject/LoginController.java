@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -37,7 +38,7 @@ public class LoginController {
 //    }
 
     @FXML
-    private void handleLoginButton(ActionEvent event) throws IOException, SQLException {
+    private void handleLoginButton() throws IOException, SQLException {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
 
@@ -66,7 +67,7 @@ public class LoginController {
 //                    System.out.println(userId);
 
                     Scene scene = new Scene(root);
-                    Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    Stage primaryStage = (Stage) txtUsername.getScene().getWindow();
                     primaryStage.setScene(scene);
                     primaryStage.centerOnScreen();
                     primaryStage.show();
@@ -89,4 +90,28 @@ public class LoginController {
         Stage stage = (Stage) txtUsername.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void initialize() {
+        // Xử lý sự kiện nhấn phím Enter trên txtUsername
+        txtUsername.setOnAction(event -> {
+            try {
+                handleLoginButton();
+            } catch (IOException | SQLException e) {
+                e.printStackTrace();
+            }
+        });
+
+        // Xử lý sự kiện nhấn phím Enter trên txtPassword
+        txtPassword.setOnAction(event -> {
+            try {
+                handleLoginButton();
+            } catch (IOException | SQLException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+
+
 }
