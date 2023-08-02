@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -126,12 +127,13 @@ public class MainController implements Initializable {
                 Button button = new Button(tenPhong);
                 if (status > 0){
                     String checkInTime = RoomCheckIn_DAO.showCheckInInformationWithID(status);
+                    Label label = new Label(tenPhong);
                     button = new Button(tenPhong + "\n" + checkInTime);
                     button.setStyle(
                             "  -fx-background-color: RED;" +
                                     "    -fx-text-alignment: center;" +
                                     "    -fx-text-fill: #fff;" +
-                                    "    -fx-font-family: 'Times New Roman'; "
+                                    "    -fx-font-family: 'Times New Roman'; "+ "-fx-font-size: 14px;"
                     );
                 }
                 if (status < 0){

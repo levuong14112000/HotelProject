@@ -60,6 +60,11 @@ public class CustomerFixController implements Initializable {
         customerController.updateTableView();
         currentStage.close();
     }
+    @FXML
+    protected void cancel(){
+        Stage currenStage = (Stage) i_fullname.getScene().getWindow();
+        currenStage.close();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

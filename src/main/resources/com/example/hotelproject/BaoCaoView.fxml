@@ -12,11 +12,11 @@
          <TableView fx:id="reportTable" prefHeight="399.0" prefWidth="964.0">
             <columns>
                <TableColumn fx:id="colSoBill" prefWidth="48.0" text="STT" />
-            <TableColumn fx:id="colMaBill" prefWidth="98.99996948242188" text="Mã Bill" />
-               <TableColumn fx:id="colTenPhong" prefWidth="192.0" text="Tên phòng" />
-               <TableColumn fx:id="colGioCheckIn" minWidth="0.0" prefWidth="189.0" text="Checkin" />
-               <TableColumn fx:id="colGioCheckOut" prefWidth="189.0" text="Checkout" />
-            <TableColumn fx:id="colTriGia" prefWidth="242.0" text="Trị giá" />
+            <TableColumn fx:id="colMaBill" prefWidth="90.0" text="Mã Bill" />
+               <TableColumn fx:id="colTenPhong" prefWidth="201.0" text="Tên phòng" />
+               <TableColumn fx:id="colGioCheckIn" minWidth="0.0" prefWidth="181.0" text="Checkin" />
+               <TableColumn fx:id="colGioCheckOut" prefWidth="188.0" text="Checkout" />
+            <TableColumn fx:id="colTriGia" prefWidth="245.0" text="Trị giá" />
             </columns>
          </TableView>
       <Label layoutX="14.0" layoutY="711.0" prefHeight="23.0" prefWidth="86.0" text="Tổng bill :">

@@ -67,5 +67,10 @@ public class CustomerInsertController {
         }
         return true;
     }
+    @FXML
+    protected void cancel(){
+        Stage currenStage = (Stage) i_fullname.getScene().getWindow();
+        currenStage.close();
+    }
 
 }

@@ -130,32 +130,32 @@
             <Separator layoutY="197.0" prefHeight="0.0" prefWidth="1214.0" />
          </children>
       </AnchorPane>
-      <Label alignment="CENTER_RIGHT" layoutX="809.0" layoutY="602.0" prefHeight="38.0" prefWidth="248.0" text="Tổng số khách :">
+      <Label alignment="CENTER_RIGHT" layoutX="711.0" layoutY="602.0" prefHeight="38.0" prefWidth="248.0" text="Tổng số khách :">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="809.0" layoutY="640.0" prefHeight="38.0" prefWidth="248.0" text="Bình quân mỗi người :">
+      <Label alignment="CENTER_RIGHT" layoutX="711.0" layoutY="640.0" prefHeight="38.0" prefWidth="248.0" text="Bình quân mỗi người :">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="809.0" layoutY="678.0" prefHeight="38.0" prefWidth="248.0" text="Bình quân mỗi phòng :">
+      <Label alignment="CENTER_RIGHT" layoutX="711.0" layoutY="678.0" prefHeight="38.0" prefWidth="248.0" text="Bình quân mỗi phòng :">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbTongSoKhach" alignment="CENTER_RIGHT" layoutX="1063.0" layoutY="602.0" prefHeight="38.0" prefWidth="152.0" text="0">
+      <Label fx:id="lbTongSoKhach" alignment="CENTER_RIGHT" layoutX="967.0" layoutY="602.0" prefHeight="38.0" prefWidth="248.0" text="0">
          <font>
             <Font name="Times New Roman" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbBinhQuanMoiNguoi" alignment="CENTER_RIGHT" layoutX="1063.0" layoutY="640.0" prefHeight="38.0" prefWidth="152.0" text="0">
+      <Label fx:id="lbBinhQuanMoiNguoi" alignment="CENTER_RIGHT" layoutX="967.0" layoutY="640.0" prefHeight="38.0" prefWidth="248.0" text="0">
          <font>
             <Font name="Times New Roman" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbBinhQuanMoiPhong" alignment="CENTER_RIGHT" layoutX="1063.0" layoutY="678.0" prefHeight="38.0" prefWidth="152.0" text="0">
+      <Label fx:id="lbBinhQuanMoiPhong" alignment="CENTER_RIGHT" layoutX="967.0" layoutY="678.0" prefHeight="38.0" prefWidth="248.0" text="0">
          <font>
             <Font name="Times New Roman" size="24.0" />
          </font>

@@ -6,6 +6,8 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,10 +29,12 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.awt.Desktop;
 
@@ -68,6 +72,7 @@ public class ReportController implements Initializable {
     private ReportDetailItem selectedRow2;
     private int selectedIndex1, selectedIndex2;
     private int userID;
+    ObservableList<ReportItem> reportItems = FXCollections.observableArrayList();
 
     public void setUserID(int userID){
         this.userID = userID;
@@ -271,6 +276,20 @@ public class ReportController implements Initializable {
             this.thanhTien = thanhTien;
         }
     }
+    private StringProperty tongTienProperty = new SimpleStringProperty();
+    private void setTongTienLabel(String value) {
+        tongTienProperty.set(value);
+    }
+    public StringProperty tongTienProperty() {
+        return tongTienProperty;
+    }
+    private StringProperty tongBillProperty = new SimpleStringProperty();
+    private void setTongBillLabel(String value) {
+        tongBillProperty.set(value);
+    }
+    public StringProperty tongBillProperty() {
+        return tongBillProperty;
+    }
     @FXML
     private void onInLaiButtonClick() {
         ReportItem selectedReportItem = reportTable.getSelectionModel().getSelectedItem();
@@ -462,25 +481,50 @@ public class ReportController implements Initializable {
             e.printStackTrace();
         }
     }
+
     @FXML
     private void onHuyBillButtonClick() {
-        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmation.setTitle("Xác nhận");
-        confirmation.setHeaderText("Bạn có chắc chắn muốn huỷ?");
+        ReportItem selectedReport = reportTable.getSelectionModel().getSelectedItem();
+        if (selectedReport == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Cảnh báo");
+            alert.setHeaderText("Không có hàng nào được chọn");
+            alert.showAndWait();
+            return;
+        }
 
-        if (confirmation.showAndWait().orElse(null) == ButtonType.OK) {
-            if (maHoaDon > 0) {
-                System.out.println("PaymentID đã chọn: " + maHoaDon);
-                RoomPayment_DAO.updatePaymentStatus(maHoaDon, 1);
-            } else {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Cảnh báo");
-                alert.setHeaderText("Không có hàng nào được chọn");
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Xác nhận xóa");
+        confirmationAlert.setHeaderText("Bạn có chắc chắn muốn xóa dịch vụ này?");
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            boolean deleteResult = RoomPayment_DAO.updatePaymentStatus(selectedReport.getPaymentID());
+            if (deleteResult) {
+                reportItems.remove(selectedReport);
+                reportTable.setItems(reportItems);
+                reportTable.refresh();
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Thông báo");
+                alert.setHeaderText(null);
+                alert.setContentText("Xoá thành công !");
                 alert.showAndWait();
             }
         }
+        double tongTien = 0;
+        int tongBill = 0;
+        for (ReportItem item : reportItems) {
+            tongTien += item.getTriGia();
+            tongBill ++;
+        }
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+        String formattedTongTien = decimalFormat.format(tongTien);
+        setTongTienLabel(formattedTongTien);
+        setTongBillLabel(String.valueOf(tongBill));
 
     }
+
     @FXML
     private void onBillDaHuyButtonClick() {
         try {
@@ -504,7 +548,6 @@ public class ReportController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ResultSet resultSet = RoomPayment_DAO.read();
-        ObservableList<ReportItem> reportItems = FXCollections.observableArrayList();
         int stt = 1;
         String maBill = String.format("0%d", stt);
         double tongTien = 0;
@@ -527,7 +570,7 @@ public class ReportController implements Initializable {
                 reportItems.add(reportItem);
                 stt++;
                 maBill = String.format("0%d", stt);
-                tongTien = tongTien + triGia;
+                tongTien += triGia;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -548,7 +591,10 @@ public class ReportController implements Initializable {
         colTriGia.setStyle("-fx-alignment: CENTER-RIGHT;");
 
         tongBillLabel.setText(String.valueOf(stt - 1));
-        tongTienLabel.setText(String.valueOf(tongTien));
+        System.out.println(tongTien);
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+        String formattedTongTien = decimalFormat.format(tongTien);
+        tongTienLabel.setText(String.valueOf(formattedTongTien));
 
         //Table Bill detail
         reportTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -619,5 +665,17 @@ public class ReportController implements Initializable {
                 reportDetailTable.getItems().clear();
             }
         });
+        double tongTienB = 0;
+        int tongBillB = 0;
+        for (ReportItem item : reportItems) {
+            tongTienB += item.getTriGia();
+            tongBillB ++;
+        }
+        DecimalFormat decimalFormatB = new DecimalFormat("#,##0.00");
+        String formattedTongTienB = decimalFormatB.format(tongTienB);
+        tongTienProperty.set(formattedTongTienB);
+        tongTienLabel.textProperty().bind(tongTienProperty);
+        tongBillProperty.set(String.valueOf(tongBillB));
+        tongBillLabel.textProperty().bind(tongBillProperty);
     }
 }

@@ -154,4 +154,22 @@ public class RoomBooking_DAO {
         return count;
     }
 
+    public static int checkBookingID(int bookingID) throws SQLException {
+        ResultSet rs;
+        int id = 0;
+        try {
+            String query = "SELECT BookingID FROM RoomBookings WHERE Deleted = 0 AND BookingID = ?";
+            PreparedStatement stmt =  connection.prepareStatement(query);
+            stmt.setInt(1, bookingID);
+            rs = stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (rs.next()) {
+            return rs.getInt("BookingID");
+        } else {
+            return -1;
+        }
+    }
 }

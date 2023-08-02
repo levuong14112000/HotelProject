@@ -19,14 +19,14 @@
                <TableColumn fx:id="roomPriceColumn" prefWidth="268.0" text="Đơn giá" />
             </columns>
          </TableView>
-         <Button fx:id="b_add" layoutX="1008.0" layoutY="264.0" mnemonicParsing="false" onAction="#insertButton" prefHeight="50.0" prefWidth="268.0" styleClass="btn" text="LƯU " />
+         <Button fx:id="b_add" layoutX="1008.0" layoutY="264.0" mnemonicParsing="false" onAction="#insertButton" prefHeight="50.0" prefWidth="268.0" styleClass="btn" text="Lưu" />
          <Label layoutX="1011.0" layoutY="96.0" prefHeight="30.0" prefWidth="126.0" text="Loại phòng :">
             <font>
                <Font name="Times New Roman" size="20.0" />
             </font>
          </Label>
-         <Button fx:id="b_update" layoutX="1008.0" layoutY="200.0" mnemonicParsing="false" onAction="#updateButton" prefHeight="50.0" prefWidth="268.0" styleClass="btn" text="SỬA" />
-         <Button fx:id="b_delete" layoutX="1008.0" layoutY="688.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="50.0" prefWidth="268.0" styleClass="btn" text="XÓA" />
+         <Button fx:id="b_update" layoutX="1008.0" layoutY="200.0" mnemonicParsing="false" onAction="#updateButton" prefHeight="50.0" prefWidth="268.0" styleClass="btn" text="Sửa" />
+         <Button fx:id="b_delete" layoutX="1008.0" layoutY="688.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="50.0" prefWidth="268.0" styleClass="btn" text="Xoá" />
       <Label layoutX="1011.0" layoutY="14.0" text="Tên phòng :">
          <font>
             <Font name="Times New Roman" size="20.0" />

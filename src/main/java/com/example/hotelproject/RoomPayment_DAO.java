@@ -67,21 +67,21 @@ public class RoomPayment_DAO {
         }
         return rs;
     }
-    public static void updatePaymentStatus(int paymentID, int status) {
+    public static boolean updatePaymentStatus(int paymentID) {
         Connection connection = null;
         PreparedStatement statement = null;
 
         try {
             connection = Conect.getInstance();
-            String query = "UPDATE RoomPayments SET Status = ? WHERE PaymentID = ?";
+            String query = "UPDATE RoomPayments SET Status = 1 WHERE PaymentID = ?";
             statement = connection.prepareStatement(query);
 
-            statement.setInt(1, status);
-            statement.setInt(2, paymentID);
+            statement.setInt(1, paymentID);
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return true;
     }
     public static int countBills() {
         int count = 0;

@@ -4,43 +4,39 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vbox" prefHeight="439.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.CustomerFixController">
-   <children>
-      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="452.0" prefWidth="642.0" VBox.vgrow="ALWAYS">
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="345.0" prefWidth="579.0" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.CustomerFixController">
          <children>
-            <Label fx:id="customerid" layoutX="38.0" layoutY="113.0" text="Customer ID :">
+            <Label fx:id="customerid" layoutX="468.0" layoutY="127.0" text="Customer ID :">
                <font>
                   <Font size="8.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="113.0" text="HỌ TÊN">
+            <Button id="btn" fx:id="insertbtn" layoutX="122.0" layoutY="267.0" mnemonicParsing="false" onAction="#FixBookingBtn" prefHeight="42.0" prefWidth="150.0" styleClass="btn" text="Cập nhật" />
+            <Label alignment="CENTER" layoutX="145.0" layoutY="14.0" prefHeight="66.0" prefWidth="290.0" text="CẬP NHẬT KHÁCH HÀNG">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Times New Roman Bold" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="263.0" text="CMND &amp; PARTPOSS">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="38.0" layoutY="180.0" prefHeight="26.0" prefWidth="109.0" text="SỐ ĐIỆN THOẠI">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="i_phone" layoutX="40.0" layoutY="220.0" prefHeight="35.0" prefWidth="552.0" />
-            <TextField fx:id="i_number" layoutX="38.0" layoutY="292.0" prefHeight="35.0" prefWidth="552.0" />
-            <TextField fx:id="i_fullname" layoutX="38.0" layoutY="145.0" prefHeight="35.0" prefWidth="552.0" />
-            <Button id="btn" fx:id="insertbtn" layoutX="198.0" layoutY="351.0" mnemonicParsing="false" onAction="#FixBookingBtn" prefHeight="43.0" prefWidth="231.0" text="CHỈNH SỬA" />
-            <Label layoutX="210.0" layoutY="20.0" prefHeight="66.0" prefWidth="220.0" text="CHỈNH SỬA KHÁCH HÀNG">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
+      <Label layoutX="49.0" layoutY="113.0" styleClass="font-text" text="Họ tên :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="49.0" layoutY="213.0" styleClass="font-text" text="CMND / Passport :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="49.0" layoutY="157.0" prefHeight="26.0" prefWidth="96.0" styleClass="font-text" text="Số điện thoại :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="i_phone" layoutX="174.0" layoutY="153.0" prefHeight="39.0" prefWidth="356.0" style="-fx-background-color: #fff;" styleClass="btn" />
+      <TextField fx:id="i_number" layoutX="174.0" layoutY="203.0" prefHeight="39.0" prefWidth="356.0" style="-fx-background-color: #fff;" styleClass="btn" />
+      <TextField fx:id="i_fullname" layoutX="174.0" layoutY="103.0" prefHeight="39.0" prefWidth="356.0" style="-fx-background-color: #fff;" styleClass="btn" />
+      <Button id="btn" fx:id="cancelBtn" layoutX="308.0" layoutY="267.0" mnemonicParsing="false" onAction="#cancel" prefHeight="42.0" prefWidth="150.0" styleClass="btn" text="Huỷ" />
          </children>
       </AnchorPane>
-   </children>
-</VBox>

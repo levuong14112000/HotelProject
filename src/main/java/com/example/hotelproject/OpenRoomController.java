@@ -51,6 +51,13 @@ public class OpenRoomController implements Initializable {
         this.userId = userId;
         initialize(null, null);
     }
+    public void errorAlert(String content){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Thông báo");
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 
     @FXML
     public void handleChooseRadioButton(){
@@ -70,14 +77,53 @@ public class OpenRoomController implements Initializable {
         String fullName = fcustomerName.getText();
         String idNumber = fnumberID.getText();
         String phoneNumber = fphoneNumber.getText();
-        int nop = Integer.parseInt(fnop.getText());
+        String nopText = fnop.getText();
 
         Customer customer = new Customer(fullName, idNumber, phoneNumber);
         roomID = Integer.parseInt(userData);
 
+        if (fullName.isEmpty() || idNumber.isEmpty() || phoneNumber.isEmpty() || nopText.isEmpty()){
+            errorAlert("Vui lòng nhập đầy đủ thông tin !");
+            if (fullName.isEmpty()){
+                fcustomerName.requestFocus();
+            } else if (idNumber.isEmpty()) {
+                fnumberID.requestFocus();
+            }  else if (phoneNumber.isEmpty()){
+                fphoneNumber.requestFocus();
+            }   else {
+                fnop.requestFocus();;
+            }
+            return;
+        }
+
+        if (!idNumber.matches("\\d{9,}")) {
+            errorAlert("CMND/Passport phải là số và có ít nhất 9 chữ số!");
+            fnumberID.requestFocus();
+            return;
+        }
+        if (!phoneNumber.matches("\\d{10,}")) {
+            errorAlert("Số điện thoại là số và có ít nhất 10 chữ số!");
+            fnumberID.requestFocus();
+            return;
+        }
+        int nop;
+        try {
+            nop = Integer.parseInt(nopText);
+            if (nop < 1) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            errorAlert("Số khách không hợp lệ !");
+            fnop.requestFocus();
+            return;
+        }
+
         try {
             if (!fKhachVangLai.isSelected()) {
                 int bookingID = Integer.parseInt(fbookingID.getText());
+                if (RoomBooking_DAO.checkBookingID(bookingID) != bookingID){
+                    errorAlert("Mã booking không tồn tại !");
+                }
                 RoomCheckIn roomCheckIn = new RoomCheckIn(roomID, bookingID, nop, userId);
                 checkInID = Room_DAO.createCustomer_CheckIn(customer, roomCheckIn);
             } else {

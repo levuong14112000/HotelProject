@@ -61,7 +61,7 @@ public class RoomList_DAO {
     public static int calculateTotalRoom() {
         int totalRoom = 0;
         try {
-            String query = "SELECT COUNT(RoomID) FROM rooms";
+            String query = "SELECT COUNT(RoomID) FROM rooms WHERE Deleted = 0";
             PreparedStatement stmt = connection.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {

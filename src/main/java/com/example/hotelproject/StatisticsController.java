@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class StatisticsController implements Initializable {
@@ -43,6 +44,7 @@ public class StatisticsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
         int tongBill = RoomPayment_DAO.countBills();
         lbTongBill.setText(String.valueOf(tongBill));
         int phongTrong = Room_DAO.countRoomss();
@@ -53,20 +55,31 @@ public class StatisticsController implements Initializable {
         lbCheckOut.setText(String.valueOf(checkOut));
         int booking = RoomBooking_DAO.countBookings();
         lbBooking.setText(String.valueOf(booking));
-        double doanhThu = RoomPayment_DAO.sumRoomCharge();
-        lbDoanhThu.setText(String.valueOf(doanhThu));
+
         double phuThu = RoomPayment_DAO.sumExtraCharge();
-        lbPhuThu.setText(String.valueOf(phuThu));
+        String formattedPhuThu = decimalFormat.format(phuThu);
+        lbPhuThu.setText(String.valueOf(formattedPhuThu));
+
         double chietKhau = RoomPayment_DAO.sumDiscount();
-        lbChietKhau.setText(String.valueOf(chietKhau));
-        double doanhSo = doanhThu + phuThu -chietKhau;
-        lbDoanhSo.setText(String.valueOf(doanhSo));
+        String formattedChietKhau = decimalFormat.format(chietKhau);
+        lbChietKhau.setText(String.valueOf(formattedChietKhau));
+
+        double doanhThu = RoomPayment_DAO.sumRoomCharge() + phuThu -chietKhau;
+        String formattedDoanhThu = decimalFormat.format(doanhThu);
+        lbDoanhThu.setText(String.valueOf(formattedDoanhThu));
+
+        double doanhSo = doanhThu + phuThu + chietKhau;
+        String formattedDoanhSo = decimalFormat.format(doanhSo);
+        lbDoanhSo.setText(String.valueOf(formattedDoanhSo));
+
         int tongSoKhach = RoomCheckIn_DAO.sumNOP();
         lbTongSoKhach.setText(String.valueOf(tongSoKhach));
         double binhQuanMoiNguoi = doanhThu / tongSoKhach;
-        lbBinhQuanMoiNguoi.setText(String.valueOf(binhQuanMoiNguoi));
+        String formattedBinhQuanMoiNguoi = decimalFormat.format(binhQuanMoiNguoi);
+        lbBinhQuanMoiNguoi.setText(String.valueOf(formattedBinhQuanMoiNguoi));
         double binhQuanMoiPhong = doanhThu / tongBill;
-        lbBinhQuanMoiPhong.setText(String.valueOf(binhQuanMoiPhong));
+        String formattedBinhQuanMoiPhong = decimalFormat.format(binhQuanMoiPhong);
+        lbBinhQuanMoiPhong.setText(String.valueOf(formattedBinhQuanMoiPhong));
     }
 
     public void PhongTrongActionOnclick(ActionEvent actionEvent) {

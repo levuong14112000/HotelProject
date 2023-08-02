@@ -67,13 +67,13 @@ public class CustomerController implements Initializable {
         }
     }
     private void performSearch(String option, String searchText) {
-        if (option.equals("CMND & PARTPOSS")){
+        if (option.equals("CMND/Passport")){
             option = "IDNumber";
         }
-        if (option.equals("SỐ ĐIỆN THOẠI")){
+        if (option.equals("Số điện thoại")){
             option = "PhoneNumber";
         }
-        if (option.equals("HỌ VÀ TÊN")){
+        if (option.equals("Họ tên")){
             option = "FullName";
         }
         ResultSet resultSet = Customer_DAO.searchData(option, searchText);
@@ -99,7 +99,7 @@ public class CustomerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showinl();
-        ObservableList<String> options = FXCollections.observableArrayList("CMND & PARTPOSS", "SỐ ĐIỆN THOẠI", "HỌ VÀ TÊN");
+        ObservableList<String> options = FXCollections.observableArrayList("CMND/Passport", "Số điện thoại", "Họ tên");
         comboBox.setItems(options);
     }
     @FXML

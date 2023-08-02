@@ -1,5 +1,7 @@
 package com.example.hotelproject;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -71,6 +74,13 @@ public class ServiceController implements Initializable {
             ServicePrice = servicePrice;
         }
 
+    }
+    private StringProperty tongProperty = new SimpleStringProperty();
+    private void setTongLabel(String value) {
+        tongProperty.set(value);
+    }
+    public StringProperty tongProperty() {
+        return tongProperty;
     }
 
     @FXML
@@ -170,6 +180,12 @@ public class ServiceController implements Initializable {
                 serviceTable.setItems(serviceList);
                 serviceTable.refresh();
 
+                int tong = 0;
+                for (ServiceItem item : serviceList) {
+                    tong ++;
+                }
+                setTongLabel(String.valueOf(tong));
+
                 showInformationAlert("Đã xóa dịch vụ thành công.");
             }
         }
@@ -204,6 +220,14 @@ public class ServiceController implements Initializable {
 
         loadDataFromDatabase();
         serviceTable.setItems(serviceList);
+
+        int tong = 0;
+        for (ServiceItem item : serviceList) {
+            tong ++;
+        }
+        tongProperty.set(String.valueOf(tong));
+        lbTongSo.textProperty().bind(tongProperty);
+
     }
 
     private void loadDataFromDatabase() {

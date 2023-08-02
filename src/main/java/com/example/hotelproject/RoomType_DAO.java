@@ -19,7 +19,7 @@ public class RoomType_DAO {
     public static int calculateTotalRoomType() {
         int totalRoom = 0;
         try {
-            String query = "SELECT COUNT(RoomTypeID) FROM roomtypes";
+            String query = "SELECT COUNT(RoomTypeID) FROM roomtypes WHERE Deleted = 0";
             PreparedStatement stmt = connection.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -89,7 +89,7 @@ public class RoomType_DAO {
     }
     public static void deleteRoomtype(int  RoomTypeID) {
         try {
-            String query = "DELETE FROM RoomTypes WHERE RoomTypeID = ?";
+            String query = "UPDATE RoomTypes SET Deleted = 1 WHERE RoomTypeID = ?";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setInt(1, RoomTypeID);
             stmt.executeUpdate();

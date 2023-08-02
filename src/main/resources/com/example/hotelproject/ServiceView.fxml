@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1290.0" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.ServiceController">
+<AnchorPane prefHeight="750.0" prefWidth="1290.0" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.ServiceController">
    <children>
       <TableView fx:id="serviceTable" prefHeight="694.0" prefWidth="968.0">
          <columns>
@@ -19,7 +19,7 @@
             <TableColumn fx:id="colDonGia" prefWidth="321.0" text="Đơn giá" />
          </columns>
       </TableView>
-      <Label alignment="CENTER_RIGHT" layoutX="590.0" layoutY="701.0" prefHeight="35.0" prefWidth="173.0" text="Tổng số mặt hàng :">
+      <Label alignment="CENTER_RIGHT" layoutX="739.0" layoutY="701.0" prefHeight="35.0" prefWidth="173.0" text="Tổng số dịch vụ :">
          <font>
             <Font name="Times New Roman" size="20.0" />
          </font>
@@ -51,7 +51,7 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Button>
-      <Label fx:id="lbTongSo" alignment="CENTER_RIGHT" layoutX="717.0" layoutY="701.0" prefHeight="35.0" prefWidth="102.0" text="20">
+      <Label fx:id="lbTongSo" alignment="CENTER_RIGHT" layoutX="866.0" layoutY="701.0" prefHeight="35.0" prefWidth="102.0" text="20">
          <font>
             <Font name="Times New Roman" size="20.0" />
          </font>
