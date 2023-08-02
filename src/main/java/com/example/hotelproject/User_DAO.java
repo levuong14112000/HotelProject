@@ -22,6 +22,20 @@ public class User_DAO {
         }
         return false;
     }
+    public static ResultSet checkLogin2(String username, String password) {
+        ResultSet resultSet;
+        try {
+            String query = "SELECT * FROM Users WHERE username = ? AND password = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            resultSet = statement.executeQuery();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
     public static ResultSet getIDbyUsernamePassword(String username, String password){
         ResultSet resultSet;
         try {

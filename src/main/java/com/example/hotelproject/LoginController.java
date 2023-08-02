@@ -41,6 +41,17 @@ public class LoginController {
     private void handleLoginButton() throws IOException, SQLException {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
+        String userData = null;
+        String paswordData = null;
+
+        ResultSet resultSet2 = User_DAO.checkLogin2(username, password);
+        while (resultSet2.next()){
+            userData = resultSet2.getString("UserName");
+            paswordData = resultSet2.getString("Password");
+        }
+
+
+//            if (User_DAO.checkLogin(username, password))
 
         ResultSet resultSet = User_DAO.getIDbyUsernamePassword(username, password);
         while (resultSet.next()) {
@@ -54,7 +65,7 @@ public class LoginController {
             alert.setContentText("Vui lòng không để trống !");
             alert.showAndWait();
         } else {
-            if (User_DAO.checkLogin(username, password)) {
+            if (username.equals(userData) && (password.equals(paswordData))) {
                 System.out.println("Đăng nhập thành công!");
 
                 try {

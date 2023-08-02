@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="750.0" prefWidth="1290.0" styleClass="color-background" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelproject.RoomDetailController">
@@ -40,10 +41,21 @@
                   <Font name="Times New Roman Bold" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="742.0" layoutY="433.0" mnemonicParsing="false" onAction="#onXuongButtonClick" prefHeight="72.0" prefWidth="96.0" styleClass="btn" stylesheets="@CSS.css" text="Xuống" textAlignment="CENTER">
+      <Button layoutX="730.0" layoutY="322.0" mnemonicParsing="false" onAction="#onLenButtonClick" prefHeight="50.0" prefWidth="96.0" styleClass="btn" stylesheets="@CSS.css" textAlignment="CENTER">
+         <font>
+            <Font size="10.0" />
+         </font>
+         <graphic>
+            <SVGPath content="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+         </graphic>
+      </Button>
+            <Button layoutX="730.0" layoutY="395.0" mnemonicParsing="false" onAction="#onXuongButtonClick" prefHeight="50.0" prefWidth="96.0" styleClass="btn" stylesheets="@CSS.css" textAlignment="CENTER">
                <font>
                   <Font size="10.0" />
                </font>
+         <graphic>
+            <SVGPath content="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+         </graphic>
             </Button>
             <Label layoutX="221.0" layoutY="700.0" prefHeight="36.0" prefWidth="124.0" text="Tổng Tiền :">
                <font>
@@ -54,11 +66,6 @@
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font></Label>
-      <Button layoutX="742.0" layoutY="257.0" mnemonicParsing="false" onAction="#onLenButtonClick" prefHeight="72.0" prefWidth="96.0" styleClass="btn" stylesheets="@CSS.css" text="Lên" textAlignment="CENTER">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Button>
       <Label fx:id="roomNumber" alignment="CENTER" layoutX="906.0" layoutY="18.0" prefHeight="28.0" prefWidth="200.0" text="RoomNumber" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />

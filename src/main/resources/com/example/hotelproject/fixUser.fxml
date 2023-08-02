@@ -25,7 +25,7 @@
         <TextField fx:id="txtUserName" disable="true" layoutX="207.0" layoutY="126.0" prefHeight="39.0" prefWidth="306.0" style="-fx-background-color: #ffffff;" styleClass="btn" />
         <Label layoutX="90.0" layoutY="230.0" styleClass="font-text" text="Mật khẩu :" />
       <PasswordField fx:id="txtPassword" layoutX="206.0" layoutY="220.0" prefHeight="39.0" prefWidth="306.0" style="-fx-background-color: #ffffff;" styleClass="btn" />
-        <CheckBox fx:id="cbadmin" layoutX="264.0" layoutY="281.0" mnemonicParsing="false" styleClass="font-text" text="Admin" />
+        <CheckBox fx:id="cbadmin" layoutX="264.0" layoutY="281.0" mnemonicParsing="false" styleClass="font-text" text="Quản lý" />
         <Button id="btn" fx:id="insertbtn" layoutX="117.0" layoutY="325.0" mnemonicParsing="false" onAction="#updateUserBtn" prefHeight="42.0" prefWidth="150.0" styleClass="btn" text="Cập Nhật" />
         <Button id="btn" fx:id="cancelBtn" layoutX="360.0" layoutY="325.0" mnemonicParsing="false" onAction="#cancel" prefHeight="42.0" prefWidth="150.0" styleClass="btn" text="Huỷ" />
     </children>

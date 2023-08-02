@@ -23,7 +23,7 @@
         <Label layoutX="81.0" layoutY="165.0" prefHeight="19.0" prefWidth="129.0" styleClass="font-text" text="Tên đăng nhập :" />
         <TextField fx:id="txtUserName" layoutX="202.0" layoutY="155.0" prefHeight="39.0" prefWidth="306.0" style="-fx-background-color: #ffffff;" styleClass="btn" />
         <Label layoutX="81.0" layoutY="230.0" styleClass="font-text" text="Mật khẩu :" />
-        <CheckBox fx:id="checkAdmin" layoutX="264.0" layoutY="263.0" mnemonicParsing="false" styleClass="font-text" text="Admin" />
+        <CheckBox fx:id="checkAdmin" layoutX="264.0" layoutY="263.0" mnemonicParsing="false" styleClass="font-text" text="Quản ký" />
         <Button id="btn" fx:id="insertbtn" layoutX="123.0" layoutY="309.0" mnemonicParsing="false" onAction="#addNewUserBtn" prefHeight="42.0" prefWidth="150.0" styleClass="btn" text="Thêm" />
       <Button id="btn" fx:id="cancelBtn" layoutX="330.0" layoutY="309.0" mnemonicParsing="false" onAction="#cancel" prefHeight="42.0" prefWidth="150.0" styleClass="btn" text="Huỷ" />
       <Separator layoutY="67.0" prefHeight="18.0" prefWidth="602.0" />
